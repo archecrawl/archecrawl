@@ -36,6 +36,10 @@
   parent: WeaponArcStatic
   noSpawn: true
   components:
+    - type: Sprite
+      layers:
+      - state: spear
+        scale: 1, 1.5
     - type: WeaponArcVisuals
       animation: Thrust
 
@@ -44,9 +48,18 @@
   parent: WeaponArcStatic
   noSpawn: true
   components:
+    - type: Sprite
+      state: slash
     - type: WeaponArcVisuals
       animation: Slash
 
+- type: entity
+  id: WeaponArcSlashShort
+  parent: WeaponArcSlash
+  noSpawn: true
+  components:
+  - type: Sprite
+    state: dagger
 
 - type: entity
   id: WeaponArcBite

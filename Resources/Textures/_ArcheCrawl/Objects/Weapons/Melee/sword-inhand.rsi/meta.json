@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Created by EmoGarbage404 (github) for ArcheCrawl",
+    "size": {
+        "x": 64,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "inhand-handle-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-handle-right",
+            "directions": 4
+        },
+        {
+            "name": "inhand-blade-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-blade-right",
+            "directions": 4
+        }
+    ]
+}

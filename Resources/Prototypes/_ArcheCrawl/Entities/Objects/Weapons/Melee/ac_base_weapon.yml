@@ -1,0 +1,145 @@
+- type: entity
+  id: ACBaseWeapon
+  parent: BaseItem
+  name: weapon
+  description: Great for hitting things.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/baseball_bat.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 10
+  - type: Item
+    sprite: Objects/Weapons/Melee/baseball_bat.rsi
+    size: 15
+  - type: DisarmMalus
+
+# todo: once we have actual weapon gen make these all abstract
+
+- type: entity
+  id: ACBaseDagger
+  parent: ACBaseWeapon
+  name: dagger
+  description: Stabby.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/dagger.rsi
+    layers:
+    - state: handle
+    - state: blade
+  - type: MeleeWeapon
+    attackRate: 1.5 # fast attack
+    range: 1.2 # low range
+    angle: 35
+    heavyWindupModifier: 1.25
+    heavyDamageModifier: 3 # higher crit damage
+    wideAnimation: WeaponArcSlashShort
+    damage:
+      types:
+        Piercing: 10
+  - type: Item
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/dagger.rsi
+    size: 10
+    inhandVisuals:
+      left:
+      - state: inhand-handle-left
+      - state: inhand-blade-left
+      right:
+      - state: inhand-handle-right
+      - state: inhand-blade-right
+
+- type: entity
+  id: ACBaseSword
+  parent: ACBaseWeapon
+  name: sword
+  description: Slashy.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/sword.rsi
+    layers:
+    - state: handle
+    - state: blade
+  - type: MeleeWeapon
+    range: 1.5
+    angle: 75 #wide angle
+    damage:
+      types:
+        Slash: 20
+  - type: Item
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/sword-inhand.rsi
+    size: 25
+    inhandVisuals:
+      left:
+      - state: inhand-handle-left
+      - state: inhand-blade-left
+      right:
+      - state: inhand-handle-right
+      - state: inhand-blade-right
+
+- type: entity
+  id: ACBaseSpear
+  parent: ACBaseWeapon
+  name: spear
+  description: Pokey.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/spear.rsi
+    layers:
+    - state: handle
+    - state: blade
+  - type: MeleeWeapon
+    attackRate: 1.25
+    range: 2 # dummy range
+    angle: 0 # no angle--just thrust
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    damage:
+      types:
+        Blunt: 5
+        Piercing: 10
+  - type: MultiHandedItem # two hands
+  - type: Item
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/spear.rsi
+    size: 35
+    inhandVisuals:
+      left:
+      - state: inhand-handle-left
+      - state: inhand-blade-left
+      right:
+      - state: inhand-handle-right
+      - state: inhand-blade-right
+
+- type: entity
+  id: ACBaseClub
+  parent: ACBaseWeapon
+  name: club
+  description: Heavy.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/club.rsi
+    layers:
+    - state: handle
+    - state: blade
+  - type: MeleeWeapon
+    attackRate: 1
+    range: 1.5
+    angle: 60 # decent angle
+    animation: WeaponArcSmash
+    wideAnimation: WeaponArcSlash
+    bluntStaminaDamageFactor: 1.5 # not sure how relevant this will be; added it anyways
+    damage:
+      types:
+        Blunt: 25
+  - type: Item
+    sprite: _ArcheCrawl/Objects/Weapons/Melee/club.rsi
+    size: 25
+    inhandVisuals:
+      left:
+      - state: inhand-handle-left
+      - state: inhand-blade-left
+      right:
+      - state: inhand-handle-right
+      - state: inhand-blade-right

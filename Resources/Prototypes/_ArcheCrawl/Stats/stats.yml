@@ -1,0 +1,23 @@
+- type: stat
+  id: Strength
+  name: stat-strength-name
+  abbreviation: stat-strength-abbreviation
+  order: 0
+
+- type: stat
+  id: Dexterity
+  name: stat-dexterity-name
+  abbreviation: stat-dexterity-abbreviation
+  order: 1
+
+- type: stat
+  id: Vigor
+  name: stat-vigor-name
+  abbreviation: stat-vigor-abbreviation
+  order: 2
+
+- type: stat
+  id: Intelligence
+  name: stat-intelligence-name
+  abbreviation: stat-intelligence-abbreviation
+  order: 3

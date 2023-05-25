@@ -1,9 +1,13 @@
-﻿using Content.Client.CharacterInfo;
+﻿using System.Linq;
+using Content.Client._ArcheCrawl.Stats;
+using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
+using Content.Shared._ArcheCrawl.Stats;
+using Content.Shared._ArcheCrawl.Stats.Components;
 using Content.Shared.Input;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
@@ -11,6 +15,7 @@ using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.Utility;
 using Robust.Shared.Input.Binding;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using static Content.Client.CharacterInfo.CharacterInfoSystem;
 using static Robust.Client.UserInterface.Controls.BaseButton;
@@ -18,9 +23,11 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 namespace Content.Client.UserInterface.Systems.Character;
 
 [UsedImplicitly]
-public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
+public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>, IOnSystemChanged<StatsSystem>
 {
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
+    [UISystemDependency] private readonly StatsSystem _stats = default!;
 
     private CharacterWindow? _window;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
@@ -63,6 +70,16 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         system.OnCharacterDetached -= CharacterDetached;
     }
 
+    public void OnSystemLoaded(StatsSystem system)
+    {
+        system.OnStatsChanged += UpdateStatsText;
+    }
+
+    public void OnSystemUnloaded(StatsSystem system)
+    {
+        system.OnStatsChanged -= UpdateStatsText;
+    }
+
     public void UnloadButton()
     {
         if (CharacterButton == null)
@@ -101,7 +118,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
         }
 
-        var (job, objectives, briefing, sprite, entityName) = data;
+        var (job, objectives, briefing, sprite, entityName, entity) = data;
 
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
@@ -139,8 +156,13 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
+        if (!_window.Objectives.Children.Any())
+            _window.ObjectivesLabel.Visible = false;
+
+
         _window.SpriteView.Sprite = sprite;
         _window.NameLabel.Text = entityName;
+        UpdateStatsText(entity);
     }
 
     private void CharacterDetached()
@@ -177,5 +199,32 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _characterInfo.RequestCharacterInfo();
             _window.Open();
         }
+    }
+
+    private void UpdateStatsText(EntityUid uid)
+    {
+        Logger.Debug("RUN");
+        if (!EntityManager.TryGetComponent<StatsComponent>(uid, out var statsComponent))
+            return;
+
+        var allStats = new List<StatPrototype>();
+        foreach (var stat in statsComponent.Stats.Keys)
+        {
+            allStats.Add(_prototypeManager.Index<StatPrototype>(stat));
+        }
+
+        var orderedStats = allStats.OrderBy(p => p.Order);
+
+        var msg = new FormattedMessage();
+        foreach (var proto in orderedStats)
+        {
+            msg.AddMarkup(Loc.GetString("character-info-stats-name", ("stat",Loc.GetString(proto.Name))));
+            msg.PushNewline();
+            msg.AddMarkup(Loc.GetString("character-info-stats-level",
+                ("amount", statsComponent.Stats[proto.ID]), ("max", proto.MaxValue)));
+            msg.PushNewline();
+        }
+
+        _window?.StatsLabel.SetMessage(msg);
     }
 }

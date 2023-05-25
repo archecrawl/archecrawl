@@ -5,6 +5,12 @@
   id: BaseMobOrganic
   noSpawn: true
   components:
+  - type: Stats
+    initialStats:
+      Strength: 5
+      Dexterity: 5
+      Vigor: 5
+      Intelligence: 5
   - type: LagCompensation
   - type: RangedDamageSound
     soundGroups:

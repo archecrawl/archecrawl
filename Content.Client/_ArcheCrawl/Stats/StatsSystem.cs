@@ -14,7 +14,6 @@ public sealed class StatsSystem : SharedStatsSystem
 
         SubscribeNetworkEvent<NetworkStatChangedEvent>(OnNetworkStatChanged);
     }
-
     private void OnNetworkStatChanged(NetworkStatChangedEvent msg, EntitySessionEventArgs args)
     {
         OnStatsChanged?.Invoke(msg.Entity);

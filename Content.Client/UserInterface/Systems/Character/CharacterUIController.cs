@@ -27,7 +27,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
-    [UISystemDependency] private readonly StatsSystem _stats = default!;
 
     private CharacterWindow? _window;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
@@ -159,9 +158,9 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         if (!_window.Objectives.Children.Any())
             _window.ObjectivesLabel.Visible = false;
 
-
         _window.SpriteView.Sprite = sprite;
         _window.NameLabel.Text = entityName;
+
         UpdateStatsText(entity);
     }
 
@@ -203,7 +202,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
     private void UpdateStatsText(EntityUid uid)
     {
-        Logger.Debug("RUN");
         if (!EntityManager.TryGetComponent<StatsComponent>(uid, out var statsComponent))
             return;
 

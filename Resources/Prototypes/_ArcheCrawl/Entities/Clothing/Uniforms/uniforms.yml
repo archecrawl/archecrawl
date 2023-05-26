@@ -1,0 +1,44 @@
+﻿- type: entity
+  id: ACClothingUniformCoatWarrior
+  parent: UnsensoredClothingUniformBase
+  name: warrior coat
+  description: A padded coat and pants, made to be worn underneath armor.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/warrior_coat.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/warrior_coat.rsi
+
+- type: entity
+  id: ACClothingUniformTunicRanger
+  parent: UnsensoredClothingUniformBase
+  name: ranger tunic
+  description: A simple tunic with some light protective covering.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/ranger_tunic.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/ranger_tunic.rsi
+
+- type: entity
+  id: ACClothingUniformTunicThief
+  parent: UnsensoredClothingUniformBase
+  name: theif tunic
+  description: A dark tunic with a loose fit.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/thief_tunic.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/thief_tunic.rsi
+
+- type: entity
+  id: ACClothingUniformWizardGarb
+  parent: UnsensoredClothingUniformBase
+  name: wizard garb
+  description: A loose-fitting garb devoid of any metal buttons or clasps.
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/wizard_garb.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/wizard_garb.rsi
+

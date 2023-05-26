@@ -1,0 +1,39 @@
+﻿- type: entity
+  id: ACWallDungeon
+  parent: ACBaseWall
+  name: dungeon wall
+  description: Rough stone walls. They feel like they surround you.
+  components:
+    - type: IconSmooth
+      key: walls
+      base: wall
+    - type: Icon
+      sprite: _ArcheCrawl/Structures/Walls/dungeon_wall.rsi
+    - type: Sprite
+      sprite: _ArcheCrawl/Structures/Walls/dungeon_wall.rsi
+
+- type: entity
+  id: ACWallRock
+  parent: ACBaseWall
+  name: rock wall
+  description: Roughly cut walls of rock. Cool to the touch.
+  components:
+    - type: IconSmooth
+      key: walls
+      mode: NoSprite
+    - type: Icon
+      sprite: _ArcheCrawl/Structures/Walls/rock.rsi
+      state: rock
+    - type: SmoothEdge
+    - type: Sprite
+      sprite: _ArcheCrawl/Structures/Walls/rock.rsi
+      layers:
+      - state: rock
+      - map: [ "enum.EdgeLayer.South" ]
+        state: rock_south
+      - map: [ "enum.EdgeLayer.East" ]
+        state: rock_east
+      - map: [ "enum.EdgeLayer.North" ]
+        state: rock_north
+      - map: [ "enum.EdgeLayer.West" ]
+        state: rock_west

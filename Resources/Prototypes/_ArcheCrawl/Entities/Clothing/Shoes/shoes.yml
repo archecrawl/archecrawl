@@ -4,7 +4,7 @@
   name: boots
   description: A pair of well-worn boots.
   components:
-    - type: Sprite
-      sprite: _ArcheCrawl/Clothing/Shoes/adventurer_boots.rsi
-    - type: Clothing
-      sprite: _ArcheCrawl/Clothing/Shoes/adventurer_boots.rsi
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Shoes/adventurer_boots.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Shoes/adventurer_boots.rsi

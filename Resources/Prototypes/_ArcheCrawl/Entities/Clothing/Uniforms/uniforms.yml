@@ -15,10 +15,10 @@
   name: ranger tunic
   description: A simple tunic with some light protective covering.
   components:
-    - type: Sprite
-      sprite: _ArcheCrawl/Clothing/Uniforms/ranger_tunic.rsi
-    - type: Clothing
-      sprite: _ArcheCrawl/Clothing/Uniforms/ranger_tunic.rsi
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/ranger_tunic.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/ranger_tunic.rsi
 
 - type: entity
   id: ACClothingUniformTunicThief
@@ -26,10 +26,10 @@
   name: theif tunic
   description: A dark tunic with a loose fit.
   components:
-    - type: Sprite
-      sprite: _ArcheCrawl/Clothing/Uniforms/thief_tunic.rsi
-    - type: Clothing
-      sprite: _ArcheCrawl/Clothing/Uniforms/thief_tunic.rsi
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/thief_tunic.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/thief_tunic.rsi
 
 - type: entity
   id: ACClothingUniformWizardGarb
@@ -37,8 +37,8 @@
   name: wizard garb
   description: A loose-fitting garb devoid of any metal buttons or clasps.
   components:
-    - type: Sprite
-      sprite: _ArcheCrawl/Clothing/Uniforms/wizard_garb.rsi
-    - type: Clothing
-      sprite: _ArcheCrawl/Clothing/Uniforms/wizard_garb.rsi
+  - type: Sprite
+    sprite: _ArcheCrawl/Clothing/Uniforms/wizard_garb.rsi
+  - type: Clothing
+    sprite: _ArcheCrawl/Clothing/Uniforms/wizard_garb.rsi
 

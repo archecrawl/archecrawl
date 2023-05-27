@@ -11,7 +11,7 @@
       Dexterity: 10
       Vigor: 10
       Intelligence: 10
-  - type: StatVariedThreshold
+  - type: StatScaledHealth
   - type: LagCompensation
   - type: RangedDamageSound
     soundGroups:

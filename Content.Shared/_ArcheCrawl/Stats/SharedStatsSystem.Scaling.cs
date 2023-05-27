@@ -9,10 +9,10 @@ public abstract partial class SharedStatsSystem
 
     public void InitializeScaling()
     {
-        SubscribeLocalEvent<StatVariedThresholdComponent, StatChangedEvent>(OnStatVariedDeathThresholdChanged);
+        SubscribeLocalEvent<StatScaledHealthComponent, StatChangedEvent>(OnStatVariedDeathThresholdChanged);
     }
 
-    private void OnStatVariedDeathThresholdChanged(EntityUid uid, StatVariedThresholdComponent component, ref StatChangedEvent args)
+    private void OnStatVariedDeathThresholdChanged(EntityUid uid, StatScaledHealthComponent component, ref StatChangedEvent args)
     {
         if (args.Stat.ID != component.ScalingStat)
             return;

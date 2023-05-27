@@ -8,7 +8,7 @@ namespace Content.Shared._ArcheCrawl.Stats.Components;
 /// threshold of an entity based on a stat
 /// </summary>
 [RegisterComponent]
-public sealed class StatVariedThresholdComponent : Component
+public sealed class StatScaledHealthComponent : Component
 {
     /// <summary>
     /// The base value of the threshold when stat equals 0.

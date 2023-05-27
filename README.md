@@ -6,7 +6,7 @@ ArcheCrawl is a full conversion fork of Space Station 14, essentially converting
 
 **Notice:** Our Discord server is for development purposes only.
 
-[Discord](https://discord.gg/Q5aFpzjrsB). | [HackMD](https://hackmd.io/team/slimegirls-incorporated?nav=overview)
+[Discord](https://discord.gg/Q5aFpzjrsB) | [HackMD](https://hackmd.io/team/slimegirls-incorporated?nav=overview)
 
 ## License
 

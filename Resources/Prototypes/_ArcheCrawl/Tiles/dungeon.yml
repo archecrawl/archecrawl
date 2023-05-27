@@ -1,0 +1,12 @@
+﻿- type: tile
+  id: ACFloorStoneDungeon
+  name: tiles-stone-floor-dungeon
+  sprite: /Textures/_ArcheCrawl/Tiles/stone_dungeon.png
+  variants: 4
+  placementVariants: [0, 1, 2, 3]
+  baseTurf: Plating
+  isSubfloor: false
+  canCrowbar: false
+  footstepSounds:
+    collection: FootstepFloor
+  heatCapacity: 10000

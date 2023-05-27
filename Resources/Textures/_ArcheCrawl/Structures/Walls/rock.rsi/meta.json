@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from /tg/station at commit https://github.com/tgstation/tgstation/commit/67a5373b4649937dd63dd94153e05e8506f40a5d",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "rock"
+        },
+        {
+            "name": "rock_south"
+        },
+        {
+            "name": "rock_east"
+        },
+        {
+            "name": "rock_north"
+        },
+        {
+            "name": "rock_west"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+﻿- type: Tag
+  id: ACWeaponClub
+
+- type: Tag
+  id: ACWeaponDagger
+
+- type: Tag
+  id: ACWeaponSpear
+
+- type: Tag
+  id: ACWeaponSword

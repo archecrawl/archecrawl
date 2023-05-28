@@ -5,6 +5,8 @@
   description: Great for hitting things.
   abstract: true
   components:
+  - type: Enchantable
+  - type: Appearance
   - type: Sprite
     sprite: Objects/Weapons/Melee/baseball_bat.rsi
     state: icon
@@ -16,6 +18,10 @@
     sprite: Objects/Weapons/Melee/baseball_bat.rsi
     size: 15
   - type: DisarmMalus
+  - type: ContainerContainer
+    containers:
+      enchantment-container: !type:Container
+        occludes: false
 
 # todo: once we have actual weapon gen make these all abstract
 
@@ -50,6 +56,9 @@
       right:
       - state: inhand-handle-right
       - state: inhand-blade-right
+  - type: Tag
+    tags:
+    - ACWeaponDagger
 
 - type: entity
   id: ACBaseSword
@@ -78,6 +87,9 @@
       right:
       - state: inhand-handle-right
       - state: inhand-blade-right
+  - type: Tag
+    tags:
+    - ACWeaponSword
 
 - type: entity
   id: ACBaseSpear
@@ -111,6 +123,9 @@
       right:
       - state: inhand-handle-right
       - state: inhand-blade-right
+  - type: Tag
+    tags:
+    - ACWeaponSpear
 
 - type: entity
   id: ACBaseClub
@@ -143,3 +158,6 @@
       right:
       - state: inhand-handle-right
       - state: inhand-blade-right
+  - type: Tag
+    tags:
+    - ACWeaponClub

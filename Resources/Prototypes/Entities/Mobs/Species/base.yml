@@ -7,10 +7,11 @@
   components:
   - type: Stats
     initialStats:
-      Strength: 5
-      Dexterity: 5
-      Vigor: 5
-      Intelligence: 5
+      Strength: 10
+      Dexterity: 10
+      Vigor: 10
+      Intelligence: 10
+  - type: StatScaledHealth
   - type: LagCompensation
   - type: RangedDamageSound
     soundGroups:
@@ -206,8 +207,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Critical
-      200: Dead
+      100: Dead
   - type: Destructible
     thresholds:
       - trigger:

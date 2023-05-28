@@ -1,0 +1,9 @@
+- type: department
+  id: Classes
+  description: department-Classes-description
+  color: "#DE3A3A"
+  roles:
+  - ACFighter
+  - ACRanger
+  - ACRogue
+  - ACWizard

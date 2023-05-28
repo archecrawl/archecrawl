@@ -1,0 +1,47 @@
+- type: startingGear
+  id: ACFighterGear
+  equipment:
+    jumpsuit: ACClothingUniformCoatWarrior
+    back: ACClothingBackpackAdventurer
+    shoes: ACAdventurerBoots
+  inhand:
+    right hand: ACBaseSword
+  innerclothingskirt: ACClothingUniformCoatWarrior
+  satchel: ACClothingSatchelAdventurer
+  duffelbag: ACClothingDuffelAdventurer
+
+- type: startingGear
+  id: ACRangerGear
+  equipment:
+    jumpsuit: ACClothingUniformTunicRanger
+    back: ACClothingBackpackAdventurer
+    shoes: ACAdventurerBoots
+  inhand:
+    right hand: ACBaseDagger
+  innerclothingskirt: ACClothingUniformTunicRanger
+  satchel: ACClothingSatchelAdventurer
+  duffelbag: ACClothingDuffelAdventurer
+
+- type: startingGear
+  id: ACRogueGear
+  equipment:
+    jumpsuit: ACClothingUniformTunicThief
+    back: ACClothingBackpackAdventurer
+    shoes: ACAdventurerBoots
+  inhand:
+    right hand: ACBaseDagger
+  innerclothingskirt: ACClothingUniformTunicThief
+  satchel: ACClothingSatchelAdventurer
+  duffelbag: ACClothingDuffelAdventurer
+
+- type: startingGear
+  id: ACWizardGear
+  equipment:
+    jumpsuit: ACClothingUniformWizardGarb
+    back: ACClothingBackpackAdventurer
+    shoes: ACAdventurerBoots
+  inhand:
+    right hand: ACBaseSpear
+  innerclothingskirt: ACClothingUniformWizardGarb
+  satchel: ACClothingSatchelAdventurer
+  duffelbag: ACClothingDuffelAdventurer

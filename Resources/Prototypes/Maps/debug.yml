@@ -29,5 +29,13 @@
         - type: StationJobs
           overflowJobs:
           - Captain
+          - ACFighter
+          - ACRanger
+          - ACRogue
+          - ACWizard
           availableJobs:
             Captain: [ -1, -1 ]
+            ACFighter: [ -1, -1 ]
+            ACRanger: [ -1, -1 ]
+            ACRogue: [ -1, -1 ]
+            ACWizard: [ -1, -1 ]

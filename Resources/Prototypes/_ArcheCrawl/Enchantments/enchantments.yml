@@ -1,0 +1,29 @@
+﻿- type: entity
+  id: EnchantmentFlame
+  name: flame
+  components:
+  - type: Enchantment
+    cost: 5
+    descriptor: enchantment-prefix-flame
+    placement: Prefix
+    description: enchantment-description-flame
+    validWeaponClasses:
+    - ACWeaponClub
+    - ACWeaponDagger
+    - ACWeaponSpear
+    - ACWeaponSword
+  - type: EnchantmentVisuals
+    key: flame
+    iconVisuals:
+    - shader: unshaded
+    inhandVisuals:
+      left:
+      - shader: unshaded
+      right:
+      - shader: unshaded
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
+  - type: PointLight
+    color: orange
+    energy: 3
+    radius: 2

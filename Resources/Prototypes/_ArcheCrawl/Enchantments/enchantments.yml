@@ -1,6 +1,7 @@
 ﻿- type: entity
   id: EnchantmentFlame
   name: flame
+  noSpawn: true
   components:
   - type: Enchantment
     cost: 5

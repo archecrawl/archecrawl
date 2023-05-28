@@ -22,6 +22,14 @@
         {
             "name": "inhand-blade-right",
             "directions": 4
+        },
+        {
+            "name": "inhand-left-flame",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right-flame",
+            "directions": 4
         }
     ]
 }

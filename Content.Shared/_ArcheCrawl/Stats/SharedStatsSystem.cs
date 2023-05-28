@@ -17,6 +17,8 @@ public abstract partial class SharedStatsSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
+        InitializeScaling();
+
         SubscribeLocalEvent<StatsComponent, MapInitEvent>(OnMapInit);
 
         _sawmill = Logger.GetSawmill("stat");
@@ -24,7 +26,11 @@ public abstract partial class SharedStatsSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, StatsComponent component, MapInitEvent args)
     {
-        component.Stats = new (component.InitialStats);
+        foreach (var (key, val) in component.InitialStats)
+        {
+            component.Stats[key] = default;
+            SetStatValue(uid, key, val, component);
+        }
         Dirty(component);
     }
 

@@ -27,22 +27,17 @@ public sealed class EnchantmentComponent : Component
     public float Cost = 1;
 
     /// <summary>
-    /// Whether or not the <see cref="Descriptor"/> goes in the front or the back
-    /// </summary>
-    [DataField("placement"), ViewVariables(VVAccess.ReadWrite)]
-    public DescriptorPlacement Placement = DescriptorPlacement.Prefix;
-
-    /// <summary>
     /// A prefix or suffix attached to the name of the entity
     /// </summary>
-    [DataField("descriptor"), ViewVariables(VVAccess.ReadWrite)]
-    public string? Descriptor;
+    [DataField("nameModifiers")]
+    public Dictionary<DescriptorPlacement, List<string>> NameModifiers = new();
 
     /// <summary>
-    /// A description used when an enchantment is being examined.
+    /// A list of descriptions that are added to the the
+    /// tooltip when the <see cref="AppliedEntity"/> is examined.
     /// </summary>
-    [DataField("description"), ViewVariables(VVAccess.ReadWrite)]
-    public string? Description;
+    [DataField("descriptions")]
+    public List<string> Descriptions = new();
 
     /// <summary>
     /// A list of weapon classes this enchantment can be applied to.

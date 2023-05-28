@@ -5,9 +5,11 @@
   components:
   - type: Enchantment
     cost: 5
-    descriptor: enchantment-prefix-flame
-    placement: Prefix
-    description: enchantment-description-flame
+    nameModifiers:
+      Prefix:
+      - enchantment-prefix-flame
+    descriptions:
+    - enchantment-description-flame
     validWeaponClasses:
     - ACWeaponClub
     - ACWeaponDagger

@@ -53,10 +53,10 @@ public abstract class SharedEnchantmentSystem : EntitySystem
             if (!TryComp<EnchantmentComponent>(ent, out var enchantment))
                 continue;
 
-            if (enchantment.Description is not { } desc)
-                continue;
-
-            allDescriptions[desc] = allDescriptions.GetValueOrDefault(desc) + 1;
+            foreach (var desc in enchantment.Descriptions)
+            {
+                allDescriptions[desc] = allDescriptions.GetValueOrDefault(desc) + 1;
+            }
         }
 
         foreach (var (desc, amount) in allDescriptions)
@@ -77,6 +77,7 @@ public abstract class SharedEnchantmentSystem : EntitySystem
             args.PushMarkup(fullString);
         }
 
+        RelayEvent(uid, component, args);
     }
 
     public bool TryApplyEnchantment(EntityUid uid, string enchantmentId, EnchantableComponent? component = null)
@@ -138,7 +139,6 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        var meta = MetaData(uid);
         var prefixList = new List<string>();
         var suffixList = new List<string>();
         foreach (var entity in component.AllEnchantments)
@@ -146,18 +146,24 @@ public abstract class SharedEnchantmentSystem : EntitySystem
             if (!TryComp<EnchantmentComponent>(entity, out var enchantComp))
                 continue;
 
-            if (enchantComp.Descriptor is not { } descriptor)
-                continue;
-
-            if (enchantComp.Placement == DescriptorPlacement.Prefix)
-                prefixList.Add(Loc.GetString(descriptor));
-            else
-                suffixList.Add(Loc.GetString(descriptor));
+            foreach (var (placement, descriptors) in enchantComp.NameModifiers)
+            {
+                switch (placement)
+                {
+                    case DescriptorPlacement.Prefix:
+                        prefixList.AddRange(descriptors.Select(Loc.GetString));
+                        break;
+                    case DescriptorPlacement.Suffix:
+                        suffixList.AddRange(descriptors.Select(Loc.GetString));
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
         prefixList = prefixList.Distinct().ToList();
         suffixList = suffixList.Distinct().ToList();
-        meta.EntityName = $"{string.Join(" ", prefixList)} {component.OriginalName} {string.Join(" ", suffixList)}".Trim();
-
+        MetaData(uid).EntityName = $"{string.Join(" ", prefixList)} {component.OriginalName} {string.Join(" ", suffixList)}".Trim();
     }
 
     #region Relays

@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ACClothingDuffelAdventurer
+  name: adventurer duffelbag
+  description: A robust duffelbag for stashing your loot.
+  components:
+    - type: Sprite
+      sprite: Clothing/Back/Duffels/salvage.rsi
+    - type: Storage
+      capacity: 300

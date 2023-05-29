@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingBackpack
+  id: ACClothingBackpackAdventurer
+  name: adventurer backpack
+  description: A robust bag for stashing your loot.
+  components:
+    - type: Sprite
+      sprite: Clothing/Back/Backpacks/salvage.rsi
+    - type: Storage
+      capacity: 200

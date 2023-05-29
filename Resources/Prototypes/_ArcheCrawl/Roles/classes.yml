@@ -1,0 +1,67 @@
+- type: job
+  id: ACFighter
+  name: class-name-fighter
+  description: class-description-fighter
+  playTimeTracker: JobPassenger
+  startingGear: ACFighterGear
+  icon: "CargoTechnician"
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Stats
+      initialStats:
+        Strength: 12
+        Dexterity: 5
+        Vigor: 8
+        Intelligence: 5
+
+- type: job
+  id: ACRanger
+  name: class-name-ranger
+  description: class-description-ranger
+  playTimeTracker: JobPassenger
+  startingGear: ACRangerGear
+  icon: "CargoTechnician"
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Stats
+      initialStats:
+        Strength: 8
+        Dexterity: 10
+        Vigor: 8
+        Intelligence: 4
+
+- type: job
+  id: ACRogue
+  name: class-name-rogue
+  description: class-description-rogue
+  playTimeTracker: JobPassenger
+  startingGear: ACRogueGear
+  icon: "CargoTechnician"
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Stats
+      initialStats:
+        Strength: 8
+        Dexterity: 12
+        Vigor: 4
+        Intelligence: 6
+
+- type: job
+  id: ACWizard
+  name: class-name-wizard
+  description: class-description-wizard
+  playTimeTracker: JobPassenger
+  startingGear: ACWizardGear
+  icon: "CargoTechnician"
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Stats
+      initialStats:
+          Strength: 4
+          Dexterity: 8
+          Vigor: 6
+          Intelligence: 12

@@ -45,7 +45,7 @@
     wideAnimation: WeaponArcSlashShort
     damage:
       types:
-        Piercing: 10
+        Piercing: 2
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/dagger.rsi
     size: 10
@@ -76,7 +76,12 @@
     angle: 75 #wide angle
     damage:
       types:
-        Slash: 20
+        Slash: 1
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 2
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/sword-inhand.rsi
     size: 25
@@ -110,8 +115,8 @@
     wideAnimation: WeaponArcThrust
     damage:
       types:
-        Blunt: 5
-        Piercing: 10
+        Blunt: .5
+        Piercing: 1
   - type: MultiHandedItem # two hands
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/spear.rsi
@@ -147,7 +152,7 @@
     bluntStaminaDamageFactor: 1.5 # not sure how relevant this will be; added it anyways
     damage:
       types:
-        Blunt: 25
+        Blunt: 2
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/club.rsi
     size: 25

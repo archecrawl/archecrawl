@@ -1,0 +1,52 @@
+﻿- type: entity
+  id: ACBaseDoor
+  parent: BaseStructure
+  name: door
+  description: A door, where will it lead?
+  abstract: true
+  components:
+  - type: InteractionOutline
+  - type: AnimationPlayer
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - AirlockLayer
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    canCrush: false
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    openingAnimationTime: 1
+    closingAnimationTime: 1
+    openSound:
+      path: /Audio/Effects/stonedoor_openclose.ogg
+    closeSound:
+      path: /Audio/Effects/stonedoor_openclose.ogg
+  - type: Appearance
+  - type: Airtight
+    fixVacuum: true
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: Occluder
+
+- type: entity
+  id: ACDoorWood
+  parent: ACBaseDoor
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Structures/Doors/wood_door.rsi
+    layers:
+      - state: closed
+        map: ["enum.DoorVisualLayers.Base"]

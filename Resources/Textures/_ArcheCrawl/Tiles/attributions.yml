@@ -1,4 +1,9 @@
-- files: ["stone_dungeon.png"]
+- files: ["stone_dungeon.png", "stone_dungeon3.png"]
   license: "CC0-1.0"
   copyright: "Created by EmoGarbage404 (github) for ArcheCrawl"
+  source: "https://github.com/archecrawl/archecrawl"
+
+- files: ["stone_dungeon2.png"]
+  license: "CC0-1.0"
+  copyright: "Created by MrGreen06#0618 (discord) for ArcheCrawl"
   source: "https://github.com/archecrawl/archecrawl"

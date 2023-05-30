@@ -4,16 +4,16 @@
   description: class-description-fighter
   playTimeTracker: JobPassenger
   startingGear: ACFighterGear
-  icon: "CargoTechnician"
+  icon: "ACFighter"
   special:
   - !type:AddComponentSpecial
     components:
     - type: Stats
       initialStats:
-        Strength: 12
-        Dexterity: 5
-        Vigor: 8
-        Intelligence: 5
+        Strength: 11
+        Dexterity: 8
+        Vigor: 10
+        Intelligence: 1
 
 - type: job
   id: ACRanger
@@ -21,16 +21,16 @@
   description: class-description-ranger
   playTimeTracker: JobPassenger
   startingGear: ACRangerGear
-  icon: "CargoTechnician"
+  icon: "ACRanger"
   special:
   - !type:AddComponentSpecial
     components:
     - type: Stats
       initialStats:
-        Strength: 8
-        Dexterity: 10
+        Strength: 9
+        Dexterity: 12
         Vigor: 8
-        Intelligence: 4
+        Intelligence: 1
 
 - type: job
   id: ACRogue
@@ -38,15 +38,15 @@
   description: class-description-rogue
   playTimeTracker: JobPassenger
   startingGear: ACRogueGear
-  icon: "CargoTechnician"
+  icon: "ACRogue"
   special:
   - !type:AddComponentSpecial
     components:
     - type: Stats
       initialStats:
-        Strength: 8
-        Dexterity: 12
-        Vigor: 4
+        Strength: 7
+        Dexterity: 11
+        Vigor: 6
         Intelligence: 6
 
 - type: job
@@ -55,13 +55,13 @@
   description: class-description-wizard
   playTimeTracker: JobPassenger
   startingGear: ACWizardGear
-  icon: "CargoTechnician"
+  icon: "ACWizard"
   special:
   - !type:AddComponentSpecial
     components:
     - type: Stats
       initialStats:
-          Strength: 4
-          Dexterity: 8
-          Vigor: 6
-          Intelligence: 12
+        Strength: 4
+        Dexterity: 7
+        Vigor: 5
+        Intelligence: 14

@@ -8,6 +8,18 @@
     },
     "states": [
         {
+            "name": "ACFighter"
+        },
+        {
+            "name": "ACRanger"
+        },
+        {
+            "name": "ACRogue"
+        },
+        {
+            "name": "ACWizard"
+        },
+        {
             "name": "Detective"
         },
         {

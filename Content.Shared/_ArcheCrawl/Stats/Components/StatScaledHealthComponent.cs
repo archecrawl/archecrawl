@@ -14,13 +14,13 @@ public sealed class StatScaledHealthComponent : Component
     /// The base value of the threshold when stat equals 0.
     /// </summary>
     [DataField("baseThreshold")]
-    public float BaseThreshold = 20f;
+    public float BaseThreshold = 15f;
 
     /// <summary>
     /// The increase in the threshold per stat
     /// </summary>
     [DataField("thresholdPerStat")]
-    public float ThresholdPerStat = 2f;
+    public float ThresholdPerStat = 1f;
 
     /// <summary>
     /// The stat that scales the threshold

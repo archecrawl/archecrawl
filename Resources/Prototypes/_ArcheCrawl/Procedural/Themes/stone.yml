@@ -1,0 +1,71 @@
+- type: dungeonRoom
+  id: ACStoneHallOfKnights17x5
+  size: 17,5
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,0
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneDiningHall11x5
+  size: 11,5
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,6
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneJail11x3
+  size: 7,5
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,12
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneStatue5x5
+  size: 5,5
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,18
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneReadingRoom3x5
+  size: 3,5
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,24
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneHallway15x3
+  size: 15,3
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,30
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneHallway11x3
+  size: 11,3
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,34
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneHallway7x3
+  size: 7,3
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 0,38
+  tags:
+    - ACStoneDungeon
+
+- type: dungeonRoom
+  id: ACStoneSkullCarpet7x7
+  size: 7,7
+  atlas: /Maps/_ArcheCrawl/Dungeon/stone_dungen.yml
+  offset: 12,34
+  tags:
+    - ACStoneDungeon

@@ -1,0 +1,29 @@
+- type: dungeonConfig
+  id: ACStone
+  generator: !type:PrefabDunGen
+    roomWhitelist:
+      - ACStoneDungeon
+    presets:
+      - Cross
+      - SpaceMan
+      - FourSquare
+  postGeneration:
+    - !type:MiddleConnectionPostGen
+      overlapCount: 3
+      count: 3
+      entities:
+        - ACDoorWood
+      edgeEntities:
+        - ACWallDungeon
+      tile: ACFloorStoneDungeon
+
+    - !type:MiddleConnectionPostGen
+      count: 1
+      entities:
+        - ACDoorWood
+      tile: ACFloorStoneDungeon
+
+    - !type:BoundaryWallPostGen
+      tile: ACFloorStoneDungeon
+      wall: ACWallDungeon
+      cornerWall: ACWallDungeon

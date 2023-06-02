@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using Content.Shared._ArcheCrawl.Crits.Components;
 using Content.Shared._ArcheCrawl.Enchantments.Components;
 using Content.Shared.Examine;
+using Content.Shared.Inventory;
 using Content.Shared.Prototypes;
 using Content.Shared.Tag;
 using Content.Shared.Weapons.Melee.Events;
@@ -30,6 +32,10 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         SubscribeLocalEvent<EnchantableComponent, ExaminedEvent>(OnExamined);
 
         SubscribeLocalEvent<EnchantableComponent, MeleeHitEvent>(RelayEvent);
+        SubscribeLocalEvent<EnchantableComponent, GetCritChanceEvent>(RelayEvent);
+        SubscribeLocalEvent<EnchantableComponent, InventoryRelayedEvent<GetCritChanceEvent>>(RelayEvent);
+        SubscribeLocalEvent<EnchantableComponent, GetCritDamageEvent>(RelayEvent);
+        SubscribeLocalEvent<EnchantableComponent, InventoryRelayedEvent<GetCritDamageEvent>>(RelayEvent);
 
         _sawmill = Logger.GetSawmill("enchantments");
     }

@@ -24,7 +24,7 @@ public sealed class EnchantmentSystem : SharedEnchantmentSystem
         SubscribeLocalEvent<EnchantableComponent, AppearanceChangeEvent>(OnAppearanceChange);
 
         SubscribeLocalEvent<EnchantableComponent, GetInhandVisualsEvent>(RelayEvent, after: new []{typeof(ItemSystem)});
-        SubscribeLocalEvent<EnchantmentVisualsComponent, GetInhandVisualsEvent>(OnGetInhandVisuals, after: new []{typeof(ItemSystem)});
+        SubscribeLocalEvent<EnchantmentInhandVisualsComponent, GetInhandVisualsEvent>(OnGetInhandVisuals, after: new []{typeof(ItemSystem)});
     }
 
     private void OnHandleState(EntityUid uid, EnchantableComponent component, ref ComponentHandleState args)
@@ -81,7 +81,7 @@ public sealed class EnchantmentSystem : SharedEnchantmentSystem
         }
     }
 
-    private void OnGetInhandVisuals(EntityUid uid, EnchantmentVisualsComponent component, GetInhandVisualsEvent args)
+    private void OnGetInhandVisuals(EntityUid uid, EnchantmentInhandVisualsComponent component, GetInhandVisualsEvent args)
     {
         var state = $"inhand-{args.Location.ToString().ToLowerInvariant()}-{component.Key}";
 

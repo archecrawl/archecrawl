@@ -1,3 +1,4 @@
+using Content.Shared._ArcheCrawl.Crits.Components;
 using Content.Shared.Damage;
 using Content.Shared.Electrocution;
 using Content.Shared.Explosion;
@@ -33,6 +34,11 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, GetBlurEvent>(RelayInventoryEvent);
 
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetStrippingVerbs);
+
+        #region ArcheCrawl relays
+        SubscribeLocalEvent<InventoryComponent, GetCritChanceEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, GetCritDamageEvent>(RelayInventoryEvent);
+        #endregion
     }
 
     protected void RelayInventoryEvent<T>(EntityUid uid, InventoryComponent component, T args) where T : EntityEventArgs, IInventoryRelayEvent

@@ -39,6 +39,9 @@
         {
             "name": "inhand-right-flame",
             "directions": 4
+        },
+        {
+            "name": "lucky"
         }
     ]
 }

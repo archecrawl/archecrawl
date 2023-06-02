@@ -1,5 +1,25 @@
 ﻿- type: entity
-  id: EnchantmentFlame
+  id: ACEnchantCritical
+  name: critical
+  noSpawn: true
+  components:
+  - type: Enchantment
+    cost: 3
+    nameModifiers:
+      Prefix:
+      - enchantment-prefix-critical
+    descriptions:
+    - enchantment-description-critical
+    validWeaponClasses:
+    - ACWeaponClub
+    - ACWeaponDagger
+    - ACWeaponSpear
+    - ACWeaponSword
+  - type: BonusCritDamage
+    multiplier: 2
+
+- type: entity
+  id: ACEnchantFlame
   name: flame
   noSpawn: true
   components:
@@ -19,6 +39,8 @@
     key: flame
     iconVisuals:
     - shader: unshaded
+  - type: EnchantmentInhandVisuals
+    key: flame
     inhandVisuals:
       left:
       - shader: unshaded
@@ -41,3 +63,25 @@
       property: Energy
       isLooped: true
       enabled: true
+
+- type: entity
+  id: ACEnchantLucky
+  name: lucky
+  noSpawn: true
+  components:
+  - type: Enchantment
+    cost: 2
+    nameModifiers:
+      Prefix:
+        - enchantment-prefix-lucky
+    descriptions:
+    - enchantment-description-lucky
+    validWeaponClasses:
+    - ACWeaponClub
+    - ACWeaponDagger
+    - ACWeaponSpear
+    - ACWeaponSword
+  - type: EnchantmentVisuals
+    key: lucky
+  - type: BonusCritChance
+    flatModifier: 0.05

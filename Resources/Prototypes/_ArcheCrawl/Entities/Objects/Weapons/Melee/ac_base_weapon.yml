@@ -5,6 +5,7 @@
   description: Great for hitting things.
   abstract: true
   components:
+  - type: RandomCritMelee
   - type: Enchantable
   - type: Appearance
   - type: Sprite
@@ -41,11 +42,12 @@
     range: 1.2 # low range
     angle: 35
     heavyWindupModifier: 1.25
-    heavyDamageModifier: 3 # higher crit damage
     wideAnimation: WeaponArcSlashShort
     damage:
       types:
         Piercing: 4
+  - type: RandomCritMelee
+    baseCritChance: 0.1
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/dagger.rsi
     size: 10
@@ -77,6 +79,8 @@
     damage:
       types:
         Slash: 8
+  - type: RandomCritMelee
+    baseCritChance: 0.025
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/sword-inhand.rsi
     size: 25
@@ -111,6 +115,8 @@
     damage:
       types:
         Piercing: 6.5
+  - type: RandomCritMelee
+    baseCritChance: 0.05
   - type: MultiHandedItem # two hands
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/spear.rsi
@@ -147,6 +153,8 @@
     damage:
       types:
         Blunt: 10
+  - type: RandomCritMelee
+    baseCritChance: 0.025
   - type: Item
     sprite: _ArcheCrawl/Objects/Weapons/Melee/club.rsi
     size: 25

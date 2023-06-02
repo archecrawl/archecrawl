@@ -1,11 +1,11 @@
-﻿using Content.Shared.Hands.Components;
+﻿using Robust.Shared.GameStates;
 
 namespace Content.Shared._ArcheCrawl.Enchantments.Components;
 
 /// <summary>
 /// This is used for giving unique visuals to enchanted items
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed class EnchantmentVisualsComponent : Component
 {
     [DataField("key")]
@@ -13,9 +13,6 @@ public sealed class EnchantmentVisualsComponent : Component
 
     [DataField("iconVisuals")]
     public List<PrototypeLayerData> IconVisuals = new();
-
-    [DataField("inhandVisuals")]
-    public Dictionary<HandLocation, List<PrototypeLayerData>> InhandVisuals = new();
 
     /// <summary>
     /// A list of sprite layer maps that this entity

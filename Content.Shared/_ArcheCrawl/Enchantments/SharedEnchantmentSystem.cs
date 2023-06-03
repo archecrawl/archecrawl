@@ -32,6 +32,7 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         SubscribeLocalEvent<EnchantableComponent, ExaminedEvent>(OnExamined);
 
         SubscribeLocalEvent<EnchantableComponent, MeleeHitEvent>(RelayEvent);
+        SubscribeLocalEvent<EnchantableComponent, GetMeleeDamageEvent>(RelayEventByRef);
         SubscribeLocalEvent<EnchantableComponent, GetCritChanceEvent>(RelayEvent);
         SubscribeLocalEvent<EnchantableComponent, InventoryRelayedEvent<GetCritChanceEvent>>(RelayEvent);
         SubscribeLocalEvent<EnchantableComponent, GetCritDamageEvent>(RelayEvent);
@@ -183,7 +184,7 @@ public abstract class SharedEnchantmentSystem : EntitySystem
     }
 
     [PublicAPI]
-    protected void RelayEventByRef(EntityUid uid, EnchantableComponent component, ref object args)
+    protected void RelayEventByRef<T>(EntityUid uid, EnchantableComponent component, ref T args) where T : notnull
     {
         foreach (var enchantment in component.EnchantmentContainer.ContainedEntities)
         {

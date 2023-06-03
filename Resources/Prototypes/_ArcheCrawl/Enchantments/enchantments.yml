@@ -1,4 +1,45 @@
 ﻿- type: entity
+  id: ACEnchantSharp
+  name: sharp
+  noSpawn: true
+  components:
+  - type: Enchantment
+    cost: 1
+    nameModifiers:
+      Prefix:
+      - enchantment-prefix-sharp
+    descriptions:
+    - enchantment-description-generic-damage
+    validWeaponClasses:
+    - ACWeaponDagger
+    - ACWeaponSpear
+    - ACWeaponSword
+  - type: BonusMeleeDamage
+    bonusDamage:
+      types:
+        Piercing: 2
+
+- type: entity
+  id: ACEnchantHeavy
+  name: heavy
+  noSpawn: true
+  components:
+  - type: Enchantment
+    cost: 1
+    nameModifiers:
+      Prefix:
+      - enchantment-prefix-heavy
+    descriptions:
+    - enchantment-description-generic-damage
+    validWeaponClasses:
+    - ACWeaponClub
+    - ACWeaponSword
+  - type: BonusMeleeDamage
+    bonusDamage:
+      types:
+        Blunt: 2
+
+- type: entity
   id: ACEnchantCritical
   name: critical
   noSpawn: true

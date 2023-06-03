@@ -4,7 +4,9 @@ enchantment-description-wrapper = {$amount ->
     [one] {$description}
     *[other] {$description} [color={$color}](×{$amount})[/color]
 }
-
+enchantment-prefix-sharp = sharp
+enchantment-prefix-heavy = heavy
+enchantment-description-generic-damage = Attacks deal [color=#f42f5d]more damage[color].
 enchantment-prefix-flame = flaming
 enchantment-description-flame = It's [color=#ffb840]engulfed in flames[/color].
 enchantment-prefix-lucky = lucky

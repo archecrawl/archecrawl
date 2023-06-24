@@ -4,7 +4,7 @@
   noSpawn: true
   components:
   - type: StatEffect
-    IsTimed: false
+    isTimed: false
   - type: DamageEntityEffect
     damage:
       types:
@@ -33,7 +33,7 @@
   components:
   - type: StatEffect
     maxStrength: 10
-    IsTimed: false
+    isTimed: false
   - type: DamageEntityEffect
     damage:
       types:

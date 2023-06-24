@@ -8,7 +8,9 @@
   - type: DefenceEffect
     modifiers:
       coefficients:
-        Brute: 1.1
+        Slash: 1.1
+        Piercing: 1.1
+        Blunt: 1.1
 
 - type: entity
   id: ACFragileEffect

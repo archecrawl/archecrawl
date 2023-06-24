@@ -1,0 +1,23 @@
+- type: entity
+  id: ACFeebleEffect
+  name: Feeble
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: DefenceEffect
+    modifiers:
+      coefficients:
+        Brute: 1.1
+
+- type: entity
+  id: ACFragileEffect
+  name: Fragile
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: AttackDamageEffect
+    modifiers:
+      coefficients:
+        Brute: 0.8

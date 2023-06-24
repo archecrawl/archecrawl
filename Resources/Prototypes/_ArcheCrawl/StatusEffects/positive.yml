@@ -1,0 +1,48 @@
+- type: entity
+  id: ACToughBonesEffect
+  name: Tough bones
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: DefenceEffect
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+
+- type: entity
+  id: ACHarderFleshEffect
+  name: Hard Flesh
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: DefenceEffect
+    modifiers:
+      coefficients:
+        Pierce: 0.8
+
+
+- type: entity
+  id: ACReinforcedSkinEffect
+  name: Reinforced skin
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: DefenceEffect
+    modifiers:
+      coefficients:
+        Slash: 0.8
+
+- type: entity
+  id: ACBasicStrengthEffect
+  name: Basic strength
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: AttackDamageEffect
+    modifiers:
+      coefficients:
+        Brute: 1.1

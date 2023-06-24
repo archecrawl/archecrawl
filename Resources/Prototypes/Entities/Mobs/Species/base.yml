@@ -12,6 +12,7 @@
       Vigor: 10
       Intelligence: 10
   - type: StatScaledHealth
+  - type: StatEffects
   - type: LagCompensation
   - type: RangedDamageSound
     soundGroups:
@@ -68,11 +69,11 @@
     bloodlossDamage:
       types:
         Bloodloss:
-          1
+          0
     bloodlossHealDamage:
       types:
         Bloodloss:
-          -1
+          0
   - type: Stamina
   - type: StatusEffects
     allowed:

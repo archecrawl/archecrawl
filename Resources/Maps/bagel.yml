@@ -78689,11 +78689,6 @@ entities:
     - pos: 46.5,-15.5
       parent: 60
       type: Transform
-  - uid: 3126
-    components:
-    - pos: 48.5,-13.5
-      parent: 60
-      type: Transform
   - uid: 3129
     components:
     - pos: 45.5,-22.5

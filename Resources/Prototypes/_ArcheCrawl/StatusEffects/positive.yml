@@ -20,7 +20,7 @@
   - type: DefenceEffect
     modifiers:
       coefficients:
-        Pierce: 0.8
+        Piercing: 0.8
 
 
 - type: entity
@@ -45,4 +45,6 @@
   - type: AttackDamageEffect
     modifiers:
       coefficients:
-        Brute: 1.1
+        Slash: 1.1
+        Piercing: 1.1
+        Blunt: 1.1

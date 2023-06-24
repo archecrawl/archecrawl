@@ -20,4 +20,6 @@
   - type: AttackDamageEffect
     modifiers:
       coefficients:
-        Brute: 0.8
+        Slash: .8
+        Piercing: .8
+        Blunt: .8

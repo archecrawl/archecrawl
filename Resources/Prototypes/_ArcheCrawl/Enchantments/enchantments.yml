@@ -87,8 +87,10 @@
       - shader: unshaded
       right:
       - shader: unshaded
-  - type: IgniteOnMeleeHit
-    fireStacks: 1
+  - type: InflictEffectOnDamage
+    effect: ACFireEffect
+    strength: 2
+    addOn: true
   - type: PointLight
     color: "#E25822"
     radius: 2

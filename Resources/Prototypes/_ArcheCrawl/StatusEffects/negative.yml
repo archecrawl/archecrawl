@@ -1,0 +1,27 @@
+- type: entity
+  id: ACFeebleEffect
+  name: Feeble
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: DefenceEffect
+    modifiers:
+      coefficients:
+        Slash: 1.1
+        Piercing: 1.1
+        Blunt: 1.1
+
+- type: entity
+  id: ACFragileEffect
+  name: Fragile
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+  - type: AttackDamageEffect
+    modifiers:
+      coefficients:
+        Slash: .8
+        Piercing: .8
+        Blunt: .8

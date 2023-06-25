@@ -1,0 +1,46 @@
+- type: entity
+  id: ACFireEffect
+  name: Fire
+  noSpawn: true
+  components:
+  - type: StatEffect
+    isTimed: false
+  - type: DamageEntityEffect
+    damage:
+      types:
+        Heat: 1
+  - type: AdjustEffectStrengthEffect
+    multiplier: 0.5
+  - type: ActivateEffectEveryUpdate
+  - type: PointLight
+    color: "#E25822"
+    radius: 1.5
+
+- type: entity
+  id: ACPoisonEffect
+  name: Poison
+  noSpawn: true
+  components:
+  - type: StatEffect
+  - type: DamageEntityEffect
+    damage:
+      types:
+        Poison: .5
+    isFatalDamage: false
+  - type: ActivateEffectEveryUpdate
+
+- type: entity
+  id: ACNailsEffect
+  name: Nails
+  noSpawn: true
+  components:
+  - type: StatEffect
+    maxStrength: 10
+    isTimed: false
+  - type: DamageEntityEffect
+    damage:
+      types:
+        Piercing: 1
+  - type: AdjustEffectStrengthEffect
+    addedOn: -1
+  - type: ActivateEffectOnDamage

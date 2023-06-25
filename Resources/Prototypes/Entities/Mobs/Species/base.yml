@@ -201,7 +201,6 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 25
-  - type: Internals
   - type: MobState
   - type: MobThresholds
     thresholds:

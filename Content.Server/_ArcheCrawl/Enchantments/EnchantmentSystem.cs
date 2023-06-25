@@ -35,6 +35,9 @@ public sealed class EnchantmentSystem : SharedEnchantmentSystem
 
     private void OnShutdown(EntityUid uid, EnchantableComponent component, ComponentShutdown args)
     {
+        if (component.EnchantmentContainer == null)
+            return;
+
         foreach (var enchantmentUid in component.EnchantmentContainer.ContainedEntities)
         {
             QueueDel(enchantmentUid);

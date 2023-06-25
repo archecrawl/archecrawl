@@ -9,6 +9,7 @@ using Content.Shared.Weapons.Melee.Events;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Shared._ArcheCrawl.Enchantments;
 
@@ -16,13 +17,13 @@ namespace Content.Shared._ArcheCrawl.Enchantments;
 /// This handles logic and relates relating to
 /// <see cref="EnchantableComponent"/> and <see cref="EnchantmentComponent"/>
 /// </summary>
-public abstract class SharedEnchantmentSystem : EntitySystem
+public abstract partial class SharedEnchantmentSystem : EntitySystem
 {
     [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly TagSystem _tag = default!;
-
-    private ISawmill _sawmill = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -31,14 +32,14 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         SubscribeLocalEvent<EnchantableComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<EnchantableComponent, ExaminedEvent>(OnExamined);
 
+        SubscribeLocalEvent<RandomEnchantmentsComponent, MapInitEvent>(OnRandomEnchantmentsMapInit);
+
         SubscribeLocalEvent<EnchantableComponent, MeleeHitEvent>(RelayEvent);
         SubscribeLocalEvent<EnchantableComponent, GetMeleeDamageEvent>(RelayEventByRef);
         SubscribeLocalEvent<EnchantableComponent, GetCritChanceEvent>(RelayEvent);
         SubscribeLocalEvent<EnchantableComponent, InventoryRelayedEvent<GetCritChanceEvent>>(RelayEvent);
         SubscribeLocalEvent<EnchantableComponent, GetCritDamageEvent>(RelayEvent);
         SubscribeLocalEvent<EnchantableComponent, InventoryRelayedEvent<GetCritDamageEvent>>(RelayEvent);
-
-        _sawmill = Logger.GetSawmill("enchantments");
     }
 
     private void OnMapInit(EntityUid uid, EnchantableComponent component, MapInitEvent args)
@@ -87,6 +88,7 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         RelayEvent(uid, component, args);
     }
 
+    [PublicAPI]
     public bool TryApplyEnchantment(EntityUid uid, string enchantmentId, EnchantableComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -101,12 +103,12 @@ public abstract class SharedEnchantmentSystem : EntitySystem
 
     public void ApplyEnchantment(EntityUid uid, string enchantmentId, EnchantableComponent? component = null)
     {
-        if (!Resolve(uid, ref component))
+        if (!Resolve(uid, ref component) || component.EnchantmentContainer == null)
             return;
 
         if (!PrototypeManager.TryIndex<EntityPrototype>(enchantmentId, out var prototype) || !prototype.HasComponent<EnchantmentComponent>())
         {
-            _sawmill.Error($"Attmped to apply invalid enchantment prototype: {enchantmentId}");
+            Log.Error($"Attmped to apply invalid enchantment prototype: {enchantmentId}");
             return;
         }
 
@@ -128,8 +130,18 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return false;
 
-        if (!PrototypeManager.TryIndex<EntityPrototype>(enchantmentId, out var prototype) ||
-            !prototype.TryGetComponent<EnchantmentComponent>(out var enchantment))
+        if (!PrototypeManager.TryIndex<EntityPrototype>(enchantmentId, out var prototype))
+            return false;
+
+        return CanApplyEnchantment(uid, prototype, component);
+    }
+
+    public bool CanApplyEnchantment(EntityUid uid, EntityPrototype prototype, EnchantableComponent? component = null, EnchantmentComponent? enchantment = null)
+    {
+        if (!Resolve(uid, ref component))
+            return false;
+
+        if (enchantment == null && !prototype.TryGetComponent(out enchantment, EntityManager.ComponentFactory))
             return false;
 
         foreach (var entity in component.AllEnchantments)
@@ -170,13 +182,16 @@ public abstract class SharedEnchantmentSystem : EntitySystem
         }
         prefixList = prefixList.Distinct().ToList();
         suffixList = suffixList.Distinct().ToList();
-        MetaData(uid).EntityName = $"{string.Join(" ", prefixList)} {component.OriginalName} {string.Join(" ", suffixList)}".Trim();
+        _metaData.SetEntityName(uid, $"{string.Join(" ", prefixList)} {component.OriginalName} {string.Join(" ", suffixList)}".Trim());
     }
 
     #region Relays
     [PublicAPI]
     protected void RelayEvent(EntityUid uid, EnchantableComponent component, object args)
     {
+        if (component.EnchantmentContainer == null)
+            return;
+
         foreach (var enchantment in component.EnchantmentContainer.ContainedEntities)
         {
             RaiseLocalEvent(enchantment, args);
@@ -186,6 +201,9 @@ public abstract class SharedEnchantmentSystem : EntitySystem
     [PublicAPI]
     protected void RelayEventByRef<T>(EntityUid uid, EnchantableComponent component, ref T args) where T : notnull
     {
+        if (component.EnchantmentContainer == null)
+            return;
+
         foreach (var enchantment in component.EnchantmentContainer.ContainedEntities)
         {
             RaiseLocalEvent(enchantment, ref args);

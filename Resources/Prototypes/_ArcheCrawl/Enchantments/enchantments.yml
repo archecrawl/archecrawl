@@ -91,7 +91,6 @@
     effect: ACFireEffect
     strength: 2
     addOn: true
-    fireStacks: 1
   - type: PointLight
     color: "#E25822"
     radius: 2

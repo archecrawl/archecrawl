@@ -33,7 +33,7 @@ public sealed class EnchantmentSystem : SharedEnchantmentSystem
             return;
 
         if (TryComp<AppearanceComponent>(uid, out var appearanceComponent))
-            _appearance.MarkDirty(appearanceComponent);
+            _appearance.QueueUpdate(uid, appearanceComponent);
     }
 
     private void OnAppearanceChange(EntityUid uid, EnchantableComponent component, ref AppearanceChangeEvent args)

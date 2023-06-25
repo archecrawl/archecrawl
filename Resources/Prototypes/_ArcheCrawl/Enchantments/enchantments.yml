@@ -89,7 +89,7 @@
       - shader: unshaded
   - type: InflictEffectOnDamage
     effect: ACFireEffect
-    strength: 1
+    strength: 2
     addOn: true
     fireStacks: 1
   - type: PointLight

@@ -44,7 +44,7 @@ public sealed class EnchantmentSystem : SharedEnchantmentSystem
 
     private void UpdateIconVisuals(EntityUid uid, EnchantableComponent? component = null, SpriteComponent? sprite = null)
     {
-        if (!Resolve(uid, ref component, ref sprite))
+        if (!Resolve(uid, ref component, ref sprite) || component.EnchantmentContainer == null)
             return;
 
         foreach (var ent in component.EnchantmentContainer.ContainedEntities)

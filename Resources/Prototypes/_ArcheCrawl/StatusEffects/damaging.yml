@@ -12,6 +12,9 @@
   - type: AdjustEffectStrengthEffect
     multiplier: 0.5
   - type: ActivateEffectEveryUpdate
+  - type: PointLight
+    color: "#E25822"
+    radius: 1.5
 
 - type: entity
   id: ACPoisonEffect

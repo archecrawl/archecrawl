@@ -172,6 +172,10 @@ namespace Content.Shared._ArcheCrawl.StatEffects
         private void RelayEvent<TEvent>(EntityUid uid, StatEffectsComponent comp, TEvent args)
         {
             var relayedArgs = new StatEffectRelayEvent<TEvent>(args, uid);
+
+            if (comp.StatusContainer == null)
+                return;
+
             foreach (var effect in comp.StatusContainer.ContainedEntities)
                 RaiseLocalEvent(effect, relayedArgs);
         }
@@ -182,6 +186,10 @@ namespace Content.Shared._ArcheCrawl.StatEffects
         private void RefRelayEvent<TEvent>(EntityUid uid, StatEffectsComponent comp, ref TEvent args)
         {
             var relayedArgs = new StatEffectRelayEvent<TEvent>(args, uid);
+
+            if (comp.StatusContainer == null)
+                return;
+
             foreach (var effect in comp.StatusContainer.ContainedEntities)
                 RaiseLocalEvent(effect, relayedArgs);
         }

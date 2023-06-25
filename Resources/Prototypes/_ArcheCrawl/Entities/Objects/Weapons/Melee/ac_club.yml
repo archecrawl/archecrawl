@@ -1,0 +1,15 @@
+- type: entity
+  id: ACClubPCG3
+  parent: ACBaseClub
+  suffix: PCG3
+  components:
+  - type: RandomEnchantments
+    budget: 3
+
+- type: entity
+  id: ACClubPCG5
+  parent: ACBaseClub
+  suffix: PCG5
+  components:
+    - type: RandomEnchantments
+      budget: 5

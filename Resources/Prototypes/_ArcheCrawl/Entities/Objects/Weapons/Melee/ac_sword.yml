@@ -1,0 +1,15 @@
+- type: entity
+  id: ACSwordPCG3
+  parent: ACBaseSword
+  suffix: PCG3
+  components:
+  - type: RandomEnchantments
+    budget: 3
+
+- type: entity
+  id: ACSwordPCG5
+  parent: ACBaseSword
+  suffix: PCG5
+  components:
+    - type: RandomEnchantments
+      budget: 5

@@ -1,0 +1,62 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Created by EmoGarbage404 (github) for ArcheCrawl",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "dungeon3_box"
+        },
+        {
+            "name": "dungeon3_corner_ne"
+        },
+        {
+            "name": "dungeon3_corner_se"
+        },
+        {
+            "name": "dungeon3_corner_nw"
+        },
+        {
+            "name": "dungeon3_corner_sw"
+        },
+        {
+            "name": "dungeon3_end_n"
+        },
+        {
+            "name": "dungeon3_end_e"
+        },
+        {
+            "name": "dungeon3_end_s"
+        },
+        {
+            "name": "dungeon3_end_w"
+        },
+        {
+            "name": "dungeon3_line_n"
+        },
+        {
+            "name": "dungeon3_line_e"
+        },
+        {
+            "name": "dungeon3_line_s"
+        },
+        {
+            "name": "dungeon3_line_w"
+        },
+        {
+            "name": "dungeon3_inner_ne"
+        },
+        {
+            "name": "dungeon3_inner_se"
+        },
+        {
+            "name": "dungeon3_inner_nw"
+        },
+        {
+            "name": "dungeon3_inner_sw"
+        }
+    ]
+}

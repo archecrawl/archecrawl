@@ -5,6 +5,8 @@
   components:
   - type: StatEffect
     isTimed: false
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectFire
   - type: DamageEntityEffect
     damage:
       types:
@@ -22,6 +24,8 @@
   noSpawn: true
   components:
   - type: StatEffect
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectPoison
   - type: DamageEntityEffect
     damage:
       types:
@@ -37,6 +41,8 @@
   - type: StatEffect
     maxStrength: 10
     isTimed: false
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectNails
   - type: DamageEntityEffect
     damage:
       types:

@@ -1,17 +1,13 @@
-using Content.Shared._ArcheCrawl.StatEffects;
-using Content.Shared._ArcheCrawl.StatEffects.Effects;
+using Content.Shared._ArcheCrawl.StatEffects.Components;
+using Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Inflictors;
 using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Server._ArcheCrawl.StatEffects
 {
-    public sealed class EffectInflictorsSystem : EntitySystem
+    public sealed partial class StatEffectsSystem
     {
-        [Dependency] private readonly SharedStatEffectsSystem _statEffectsSystem = default!;
-
-        public override void Initialize()
+        public void InitializeInflictor()
         {
-            base.Initialize();
-
             SubscribeLocalEvent<InflictEffectOnDamageComponent, MeleeHitEvent>(InflictOnHit);
         }
 
@@ -22,7 +18,7 @@ namespace Content.Server._ArcheCrawl.StatEffects
                 if (!TryComp<StatEffectsComponent>(entity, out var statEffects))
                     continue;
 
-                _statEffectsSystem.ApplyEffect(entity, comp.Effect, comp.Strength, TimeSpan.FromSeconds(comp.Length), comp.AddOn, comp.Replace, statEffects);
+                ApplyEffect(entity, comp.Effect, comp.Strength, TimeSpan.FromSeconds(comp.Length), comp.AddOn, comp.Replace, statEffects);
             }
         }
     }

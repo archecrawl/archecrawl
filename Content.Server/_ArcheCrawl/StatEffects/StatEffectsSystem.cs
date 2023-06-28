@@ -1,36 +1,72 @@
 using Content.Server.Administration;
 using Content.Shared._ArcheCrawl.StatEffects;
-using Content.Shared._ArcheCrawl.StatEffects.Effects;
+using Content.Shared._ArcheCrawl.StatEffects.Components;
+using Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Active;
 using Content.Shared.Administration;
 using Content.Shared.Prototypes;
 using Robust.Shared.Console;
-using Robust.Shared.Containers;
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._ArcheCrawl.StatEffects
 {
-    public sealed class StatEffectsSystem : EntitySystem
+    public sealed partial class StatEffectsSystem : SharedStatEffectsSystem
     {
         [Dependency] private readonly IConsoleHost _consoleHost = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly SharedStatEffectsSystem _sharedSystem = default!;
 
         /// <inheritdoc/>
         public override void Initialize()
         {
+            base.Initialize();
+
             SubscribeLocalEvent<StatEffectsComponent, ComponentShutdown>(OnShutdown);
 
-            _consoleHost.RegisterCommand("addeffect", Loc.GetString("add-effect-command"), "addeffect <uid> <effect ID> <strength> <timer>", AddEffectCommand, StatusCommandCompletion);
+            SubscribeLocalEvent<StatEffectComponent, StatEffectRelayEvent<StatEffectUpdateEvent>>(EffectUpdate);
+            SubscribeLocalEvent<AdjustEffectStrengthEffectComponent, StatEffectActivateEvent>(AdjustStrengthEffect);
+
+            _consoleHost.RegisterCommand("addeffect",
+                Loc.GetString("add-effect-command"),
+                "addeffect <uid> <effect ID> <strength> <timer>",
+                AddEffectCommand,
+                StatusCommandCompletion);
+
+            InitializeInflictor();
         }
 
         private void OnShutdown(EntityUid uid, StatEffectsComponent component, ComponentShutdown args)
         {
+            if (component.StatusContainer == null)
+                return;
+
             foreach (var effectUid in component.StatusContainer.ContainedEntities)
             {
                 QueueDel(effectUid);
             }
+        }
+
+        private void EffectUpdate(EntityUid uid, StatEffectComponent comp, StatEffectRelayEvent<StatEffectUpdateEvent> args)
+        {
+            if (!comp.IsTimed)
+                return;
+
+            var curTime = Timing.CurTime;
+
+            if (curTime > comp.Length)
+            {
+                RaiseLocalEvent(uid, new StatEffectTimeoutEvent(args.Victim));
+                QueueDel(uid);
+            }
+        }
+
+        private void AdjustStrengthEffect(EntityUid uid, AdjustEffectStrengthEffectComponent comp, StatEffectActivateEvent args)
+        {
+            if (!TryComp<StatEffectComponent>(uid, out var effectComp))
+                return;
+
+            var newStrength = (int) (effectComp.OverallStrength * comp.Multipler + comp.AddedOn);
+
+            ModifyEffect(uid, newStrength, overrideEffect: true, comp: effectComp);
         }
 
         [AdminCommand(AdminFlags.Fun)]
@@ -48,7 +84,7 @@ namespace Content.Server._ArcheCrawl.StatEffects
                 return;
             }
 
-            if (!_prototypeManager.TryIndex<EntityPrototype>(args[1], out var effectPrototype) || !effectPrototype.HasComponent<StatEffectComponent>())
+            if (!PrototypeManager.TryIndex<EntityPrototype>(args[1], out var effectPrototype) || !effectPrototype.HasComponent<StatEffectComponent>())
             {
                 shell.WriteError("Prototype either isn't real or doesn't have StatEffectComponent.");
                 return;

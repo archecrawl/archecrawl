@@ -1,15 +1,12 @@
-using Content.Shared._ArcheCrawl.StatEffects.Events;
-using Content.Shared._ArcheCrawl.StatEffects.Effects;
+using Content.Shared._ArcheCrawl.StatEffects.Components.Activations;
 using Content.Shared.Damage;
 
 namespace Content.Shared._ArcheCrawl.StatEffects
 {
-    public sealed class EffectActivationSystem : EntitySystem
+    public abstract partial class SharedStatEffectsSystem
     {
-        public override void Initialize()
+        public void InitializeActivation()
         {
-            base.Initialize();
-
             SubscribeLocalEvent<ActivateEffectEveryUpdateComponent, StatEffectRelayEvent<StatEffectUpdateEvent>>(RelayedActivation);
             SubscribeLocalEvent<ActivateEffectOnTimeoutComponent, StatEffectTimeoutEvent>(TimeoutActivation);
             SubscribeLocalEvent<ActivateEffectOnDamageComponent, StatEffectRelayEvent<DamageChangedEvent>>(HurtActivation);

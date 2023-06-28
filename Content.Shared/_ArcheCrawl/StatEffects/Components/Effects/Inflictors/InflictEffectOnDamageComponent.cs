@@ -1,4 +1,4 @@
-namespace Content.Shared._ArcheCrawl.StatEffects.Effects
+namespace Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Inflictors
 {
     [RegisterComponent]
     public sealed class InflictEffectOnDamageComponent : Component

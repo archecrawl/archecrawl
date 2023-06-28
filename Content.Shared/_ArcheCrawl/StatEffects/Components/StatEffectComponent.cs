@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._ArcheCrawl.StatEffects
+namespace Content.Shared._ArcheCrawl.StatEffects.Components
 {
     [RegisterComponent, NetworkedComponent, Access(typeof(SharedStatEffectsSystem))]
     public sealed class StatEffectComponent : Component

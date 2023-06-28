@@ -1,6 +1,6 @@
 
 
-namespace Content.Shared._ArcheCrawl.StatEffects.Events
+namespace Content.Shared._ArcheCrawl.StatEffects
 {
     /// <summary>
     /// Raised every second and a half by default.

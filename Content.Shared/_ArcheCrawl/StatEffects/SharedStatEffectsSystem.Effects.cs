@@ -1,28 +1,25 @@
 using Content.Shared.Damage;
-using Content.Shared.Mobs.Systems;
-using Content.Shared._ArcheCrawl.StatEffects.Events;
-using Content.Shared._ArcheCrawl.StatEffects;
-using Content.Shared._ArcheCrawl.StatEffects.Effects;
-using Robust.Shared.Timing;
+using Content.Shared._ArcheCrawl.StatEffects.Components;
+using Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Active;
+using Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Passive;
+using Content.Shared.StatusIcon;
+using Content.Shared.StatusIcon.Components;
 using Content.Shared.Weapons.Melee.Events;
 
-// Mostly for effects that don't spawn stuff/delete entities
-
-namespace Content.Shared._ArcheCrawl.StatEffects.Effects
+namespace Content.Shared._ArcheCrawl.StatEffects
 {
-    public sealed class SharedEffectsSystem : EntitySystem
+    /// <summary>
+    /// // Mostly for effects that don't spawn stuff/delete entities
+    /// </summary>
+    public abstract partial class SharedStatEffectsSystem
     {
-        [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-        [Dependency] private readonly MobThresholdSystem _thresholdSystem = default!;
-
-        public override void Initialize()
+        public void InitializeEffects()
         {
-            base.Initialize();
-
             SubscribeLocalEvent<DamageEntityEffectComponent, StatEffectActivateEvent>(DamageEffect);
 
             SubscribeLocalEvent<AttackDamageEffectComponent, StatEffectRelayEvent<MeleeHitEvent>>(AttackDamageEffect);
             SubscribeLocalEvent<DefenceEffectComponent, StatEffectRelayEvent<DamageModifyEvent>>(DefenceEffect);
+            SubscribeLocalEvent<StatEffectIconComponent, StatEffectRelayEvent<GetStatusIconsEvent>>(OnGetStatusIcon);
         }
 
         #region Active Effects
@@ -62,6 +59,11 @@ namespace Content.Shared._ArcheCrawl.StatEffects.Effects
                 return;
 
             args.Args.BonusDamage = DamageSpecifier.ApplyModifierSet(args.Args.BonusDamage, ScaleModiferWithStrength(comp.Modifiers, effectComp.OverallStrength));
+        }
+
+        private void OnGetStatusIcon(EntityUid uid, StatEffectIconComponent component,  StatEffectRelayEvent<GetStatusIconsEvent> args)
+        {
+            args.Args.StatusIcons.Add(PrototypeManager.Index<StatusIconPrototype>(component.StatusIcon));
         }
 
         #endregion

@@ -4,9 +4,10 @@
     roomWhitelist:
       - ACStoneDungeon
     presets:
-      - Cross
-      - SpaceMan
-      - FourSquare
+      - Bucket
+      - Wow
+      - SpaceShip
+      - Tall
   postGeneration:
     - !type:MiddleConnectionPostGen
       overlapCount: 3

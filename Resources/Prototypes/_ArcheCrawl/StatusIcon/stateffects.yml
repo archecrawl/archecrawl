@@ -1,0 +1,62 @@
+﻿- type: statusIcon
+  id: ACStatEffectFire
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: fire
+
+- type: statusIcon
+  id: ACStatEffectPoison
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: poison
+
+- type: statusIcon
+  id: ACStatEffectNails
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: nails
+
+- type: statusIcon
+  id: ACStatEffectFeeble
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: feeble
+
+- type: statusIcon
+  id: ACStatEffectFragile
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: fragile
+
+- type: statusIcon
+  id: ACStatEffectToughBones
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: tough-bones
+
+- type: statusIcon
+  id: ACStatEffectHardFlesh
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: hard-flesh
+
+- type: statusIcon
+  id: ACStatEffectReinforcedSkin
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: reinforced-skin
+
+- type: statusIcon
+  id: ACStatEffectBasicStrength
+  priority: 11
+  icon:
+    sprite: _ArcheCrawl/Interface/stat_effect_icons.rsi
+    state: basic-strength

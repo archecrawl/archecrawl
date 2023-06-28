@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "license": "CC0-1.0",
+    "copyright": "Created by PixelTheKermit (github) for ArcheCrawl",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "basic-strength"
+        },
+        {
+            "name": "feeble"
+        },
+        {
+            "name": "fire"
+        },
+        {
+            "name": "fragile"
+        },
+        {
+            "name": "hard-flesh"
+        },
+        {
+            "name": "nails"
+        },
+        {
+            "name": "poison"
+        },
+        {
+            "name": "reinforced-skin"
+        },
+        {
+            "name": "tough-bones"
+        }
+    ]
+}

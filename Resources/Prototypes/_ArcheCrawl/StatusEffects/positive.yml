@@ -5,23 +5,26 @@
   components:
   - type: StatEffect
     maxStrength: 10
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectToughBones
   - type: DefenceEffect
     modifiers:
       coefficients:
         Blunt: 0.8
 
 - type: entity
-  id: ACHarderFleshEffect
+  id: ACHardFleshEffect
   name: Hard Flesh
   noSpawn: true
   components:
   - type: StatEffect
     maxStrength: 10
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectHardFlesh
   - type: DefenceEffect
     modifiers:
       coefficients:
         Piercing: 0.8
-
 
 - type: entity
   id: ACReinforcedSkinEffect
@@ -30,6 +33,8 @@
   components:
   - type: StatEffect
     maxStrength: 10
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectReinforcedSkin
   - type: DefenceEffect
     modifiers:
       coefficients:
@@ -42,6 +47,8 @@
   components:
   - type: StatEffect
     maxStrength: 10
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectBasicStrength
   - type: AttackDamageEffect
     modifiers:
       coefficients:

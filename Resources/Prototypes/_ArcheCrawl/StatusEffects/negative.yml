@@ -5,6 +5,8 @@
   components:
   - type: StatEffect
     maxStrength: 10
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectFeeble
   - type: DefenceEffect
     modifiers:
       coefficients:
@@ -19,6 +21,8 @@
   components:
   - type: StatEffect
     maxStrength: 10
+  - type: StatEffectIcon
+    statusIcon: ACStatEffectFragile
   - type: AttackDamageEffect
     modifiers:
       coefficients:

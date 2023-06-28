@@ -1,0 +1,118 @@
+﻿- type: decal
+  id: ACStoneDungeon3Box
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_box
+
+- type: decal
+  id: ACStoneDungeon3CornerNe
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_corner_ne
+
+- type: decal
+  id: ACStoneDungeon3CornerSe
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_corner_se
+
+- type: decal
+  id: ACStoneDungeon3CornerNw
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_corner_nw
+
+- type: decal
+  id: ACStoneDungeon3CornerSw
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_corner_sw
+
+- type: decal
+  id: ACStoneDungeon3InnerNe
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_inner_ne
+
+- type: decal
+  id: ACStoneDungeon3InnerSe
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_inner_se
+
+- type: decal
+  id: ACStoneDungeon3InnerNw
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_inner_nw
+
+- type: decal
+  id: ACStoneDungeon3InnerSw
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_inner_sw
+
+- type: decal
+  id: ACStoneDungeon3EndN
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_end_n
+
+- type: decal
+  id: ACStoneDungeon3EndE
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_end_e
+
+- type: decal
+  id: ACStoneDungeon3EndS
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_end_s
+
+- type: decal
+  id: ACStoneDungeon3EndW
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_end_w
+
+- type: decal
+  id: ACStoneDungeon3LineN
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_line_n
+
+- type: decal
+  id: ACStoneDungeon3LineE
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_line_e
+
+- type: decal
+  id: ACStoneDungeon3LineS
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_line_s
+
+- type: decal
+  id: ACStoneDungeon3LineW
+  tags: ["ac", "dungeon", "markings"]
+  sprite:
+    sprite: _ArcheCrawl/Decals/dungeon_trim.rsi
+    state: dungeon3_line_w

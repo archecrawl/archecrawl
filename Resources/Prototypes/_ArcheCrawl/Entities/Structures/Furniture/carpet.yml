@@ -1,0 +1,39 @@
+﻿- type: entity
+  id: ACBaseCarpet
+  parent: BaseStructure
+  description: "A worn out carpet. Still keeps the heat in."
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+  - type: Icon
+    state: full
+  - type: IconSmooth
+    key: full
+    base: carpet_
+  - type: Tag
+    tags:
+    - Carpet
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: ACCarpetDark
+  parent: ACBaseCarpet
+  name: dark carpet
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Structures/Furniture/carpet_dark.rsi
+  - type: Icon
+    sprite: _ArcheCrawl/Structures/Furniture/carpet_dark.rsi

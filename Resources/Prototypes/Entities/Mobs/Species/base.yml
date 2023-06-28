@@ -75,6 +75,7 @@
         Bloodloss:
           0
   - type: Stamina
+  - type: StatusIcon
   - type: StatusEffects
     allowed:
       - Stun

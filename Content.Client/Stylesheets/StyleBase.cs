@@ -42,6 +42,22 @@ namespace Content.Client.Stylesheets
 
         protected StyleBase(IResourceCache resCache)
         {
+            var lora12 = resCache.GetFont
+            (
+                new []
+                {
+                    "/Fonts/_ArcheCrawl/Lora/Lora-Regular.ttf",
+                },
+                12
+            );
+            var lora12Italic = resCache.GetFont
+            (
+                new []
+                {
+                    "/Fonts/_ArcheCrawl/Lora/Lora-Italic.ttf",
+                },
+                12
+            );
             var notoSans12 = resCache.GetFont
             (
                 new []
@@ -158,7 +174,7 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(null, null, null, null),
                     new[]
                     {
-                        new StyleProperty("font", notoSans12),
+                        new StyleProperty("font", lora12),
                     }),
 
                 // Default font.
@@ -166,7 +182,7 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(null, new[] {StyleClassItalic}, null, null),
                     new[]
                     {
-                        new StyleProperty("font", notoSans12Italic),
+                        new StyleProperty("font", lora12Italic),
                     }),
 
                 // Window close button base texture.

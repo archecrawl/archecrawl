@@ -27,6 +27,22 @@ namespace Content.Client.Stylesheets
 
         public StyleSpace(IResourceCache resCache) : base(resCache)
         {
+            var lora10 = resCache.GetFont
+            (
+                new []
+                {
+                    "/Fonts/_ArcheCrawl/Lora/Lora-Regular.ttf",
+                },
+                10
+            );
+            var lora16Bold = resCache.GetFont
+            (
+                new []
+                {
+                    "/Fonts/_ArcheCrawl/Lora/Lora-Bold.ttf",
+                },
+                15
+            );
             var notoSans10 = resCache.GetFont
             (
                 new []
@@ -65,11 +81,11 @@ namespace Content.Client.Stylesheets
             Stylesheet = new Stylesheet(BaseRules.Concat(new StyleRule[]
             {
                 Element<Label>().Class(StyleClassLabelHeading)
-                    .Prop(Label.StylePropertyFont, notoSansBold16)
+                    .Prop(Label.StylePropertyFont, lora16Bold)
                     .Prop(Label.StylePropertyFontColor, SpaceRed),
 
                 Element<Label>().Class(StyleClassLabelSubText)
-                    .Prop(Label.StylePropertyFont, notoSans10)
+                    .Prop(Label.StylePropertyFont, lora10)
                     .Prop(Label.StylePropertyFontColor, Color.DarkGray),
 
                 Element<PanelContainer>().Class(ClassHighDivider)

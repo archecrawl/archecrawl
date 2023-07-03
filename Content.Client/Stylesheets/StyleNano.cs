@@ -28,9 +28,7 @@ namespace Content.Client.Stylesheets
                 // Ew, but ok
                 new[]
                 {
-                    $"/Fonts/NotoSans{ds}/NotoSans{ds}-{variation}.ttf",
-                    $"/Fonts/NotoSans/NotoSansSymbols-{sv}.ttf",
-                    "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf",
+                    $"/Fonts/_ArcheCrawl/Lora/Lora-{sv}.ttf"
                 },
                 size
             );
@@ -484,6 +482,7 @@ namespace Content.Client.Stylesheets
             var sliderFillBlue = new StyleBoxTexture(sliderFillBox) {Modulate = Color.Blue};
             var sliderFillWhite = new StyleBoxTexture(sliderFillBox) { Modulate = Color.White };
 
+            var loraBold13 = resCache.GetFont("/Fonts/_ArcheCrawl/Lora/Lora-Bold.ttf", 13);
             var boxFont13 = resCache.GetFont("/Fonts/Boxfont-round/Boxfont Round.ttf", 13);
 
             var insetBack = new StyleBoxTexture
@@ -1313,7 +1312,7 @@ namespace Content.Client.Stylesheets
 
                 // Window Headers
                 Element<Label>().Class("FancyWindowTitle")
-                    .Prop("font", boxFont13)
+                    .Prop("font", loraBold13)
                     .Prop("font-color", NanoGold),
 
                 Element<PanelContainer>().Class("WindowHeadingBackground")

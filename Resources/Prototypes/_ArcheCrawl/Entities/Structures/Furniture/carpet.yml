@@ -37,3 +37,13 @@
     sprite: _ArcheCrawl/Structures/Furniture/carpet_dark.rsi
   - type: Icon
     sprite: _ArcheCrawl/Structures/Furniture/carpet_dark.rsi
+
+- type: entity
+  id: ACCarpetCrimson
+  parent: ACBaseCarpet
+  name: crimson carpet
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Structures/Furniture/carpet_crimson.rsi
+  - type: Icon
+    sprite: _ArcheCrawl/Structures/Furniture/carpet_crimson.rsi

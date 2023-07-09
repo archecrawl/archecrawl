@@ -5,6 +5,9 @@
   description: A door, where will it lead?
   abstract: true
   components:
+  - type: Sprite
+    noRot: true
+    snapCardinals: true
   - type: InteractionOutline
   - type: AnimationPlayer
   - type: Physics

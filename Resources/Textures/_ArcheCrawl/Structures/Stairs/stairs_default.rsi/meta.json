@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Created by EmoGarbage404 (github) for ArcheCrawl",
+  "size": {
+    "x": 32,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "down"
+    },
+    {
+      "name": "up"
+    }
+  ]
+}

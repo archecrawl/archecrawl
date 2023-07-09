@@ -1,0 +1,13 @@
+﻿- type: biomeTemplate
+  id: ACFullCaves
+  layers:
+    # todo: This is kinda laggy so we'll investigate in the future if it's even needed.
+    #- !type:BiomeEntityLayer
+    #  threshold: -1.0
+    #  allowedTiles:
+    #    - FloorAsteroidSand
+    #  entities:
+    #    - ACWallRock
+    - !type:BiomeTileLayer
+      threshold: -1.0
+      tile: FloorAsteroidSand

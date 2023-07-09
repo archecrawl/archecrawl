@@ -21,6 +21,10 @@
     energy: 1
     color: "#e47c54"
     offset: "0, 0.5"
+  - type: Tag
+    tags:
+    - Wall
+    - Structure
 
 - type: entity
   id: ACWallLightTorch

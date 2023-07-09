@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Content.Server.Construction;
 using Robust.Shared.CPUJob.JobQueues;
 using Content.Server.Decals;
+using Content.Shared._ArcheCrawl.Procedural.PostGeneration;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonGenerators;
 using Content.Shared.Procedural.PostGeneration;
@@ -143,6 +144,11 @@ public sealed partial class DungeonJob : Job<Dungeon>
                 case WallMountPostGen wall:
                     await PostGen(wall, dungeon, _gridUid, _grid, random);
                     break;
+                // ArcheCrawl implementation start
+                case ACLimitedEntityPostGen acLimitedEntity:
+                    await PostGen(acLimitedEntity, dungeon, _gridUid, _grid, random);
+                    break;
+                // ArcheCrawl implementation end
                 default:
                     throw new NotImplementedException();
             }

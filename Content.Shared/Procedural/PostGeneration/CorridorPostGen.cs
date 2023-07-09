@@ -1,3 +1,6 @@
+using Content.Shared.Maps;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+
 namespace Content.Shared.Procedural.PostGeneration;
 
 /// <summary>
@@ -22,6 +25,9 @@ public sealed class CorridorPostGen : IPostDunGen
     /// </summary>
     [DataField("width")]
     public int Width = 3;
+
+    [DataField("corridorTile", customTypeSerializer: typeof(PrototypeIdSerializer<ContentTileDefinition>))]
+    public string CorridorTile = "FloorSteel";
 }
 
 public enum CorridorPostGenMethod : byte

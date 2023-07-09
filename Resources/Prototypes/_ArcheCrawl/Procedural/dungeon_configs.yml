@@ -4,27 +4,30 @@
     roomWhitelist:
       - ACStoneDungeon
     presets:
-      - Bucket
-      - Wow
-      - SpaceShip
-      - Tall
+    - ACCompact
   postGeneration:
-    - !type:MiddleConnectionPostGen
-      overlapCount: 3
-      count: 3
-      entities:
-        - ACDoorWood
-      edgeEntities:
-        - ACWallDungeon
-      tile: ACFloorStoneDungeon
 
-    - !type:MiddleConnectionPostGen
-      count: 1
+    - !type:RoomEntrancePostGen
+      tile: ACFloorStoneDungeon3
       entities:
         - ACDoorWood
-      tile: ACFloorStoneDungeon
+
+    - !type:ACLimitedEntityPostGen
+      entity: ACStairsUp
+
+    - !type:ACLimitedEntityPostGen
+      entity: ACStairsDown
+
+    - !type:CorridorPostGen
+      corridorTile: ACFloorStoneDungeon3
+      width: 1
+
+    - !type:JunctionPostGen
+      width: 1
+      entities:
+        - ACDoorWood
 
     - !type:BoundaryWallPostGen
-      tile: ACFloorStoneDungeon
+      tile: ACFloorStoneDungeon3
       wall: ACWallDungeon
       cornerWall: ACWallDungeon

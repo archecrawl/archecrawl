@@ -1,4 +1,10 @@
 ﻿- type: Tag
+  id: ACStoneDungeon
+
+- type: Tag
+  id: ACUpStairs
+
+- type: Tag
   id: ACWeaponClub
 
 - type: Tag
@@ -9,6 +15,3 @@
 
 - type: Tag
   id: ACWeaponSword
-
-- type: Tag
-  id: ACStoneDungeon

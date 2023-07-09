@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.NodeContainer;
+using Content.Shared._ArcheCrawl.Procedural.PostGeneration;
 using Content.Shared.Doors.Components;
 using Content.Shared.Physics;
 using Content.Shared.Procedural;
@@ -301,7 +302,7 @@ public sealed partial class DungeonJob
 
                 if (!blocked)
                     continue;
-                
+
                 var nextDir = (Direction) ((i + 1) * 2 % 8);
                 blocked = HasWall(grid, tile + nextDir.ToIntVec());
 
@@ -858,7 +859,7 @@ public sealed partial class DungeonJob
         }
 
         var setTiles = new List<(Vector2i, Tile)>();
-        var tileDef = _tileDefManager["FloorSteel"];
+        var tileDef = _tileDefManager[gen.CorridorTile];
 
         foreach (var tile in corridorTiles)
         {
@@ -1236,6 +1237,35 @@ public sealed partial class DungeonJob
 
                 if (!ValidateResume())
                     return;
+            }
+        }
+    }
+
+    private async Task PostGen(ACLimitedEntityPostGen gen, Dungeon dungeon, EntityUid gridUid, MapGridComponent grid, Random random)
+    {
+        var checkedTiles = new HashSet<Vector2i>();
+        var allExterior = new List<Vector2i>(dungeon.RoomTiles);
+        var count = 0;
+
+        random.Shuffle(allExterior);
+
+        foreach (var neighbor in allExterior)
+        {
+            // Occupado
+            if (checkedTiles.Contains(neighbor) || !_anchorable.TileFree(grid, neighbor, CollisionLayer, CollisionMask))
+                continue;
+
+            if (!checkedTiles.Add(neighbor))
+                continue;
+
+            var gridPos = grid.GridTileToLocal(neighbor);
+
+            _entManager.SpawnEntities(gridPos, gen.Entity);
+            count++;
+
+            if (count >= gen.Limit)
+            {
+                return;
             }
         }
     }

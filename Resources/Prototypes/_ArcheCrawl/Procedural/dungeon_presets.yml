@@ -1,0 +1,7 @@
+﻿- type: dungeonPreset
+  id: ACCompact
+  roomPacks:
+    - 0,0,17,17
+    - 20,0,37,17
+    - 0,20,17,37
+    - 20,20,37,37

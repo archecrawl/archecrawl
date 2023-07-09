@@ -1,0 +1,49 @@
+﻿- type: entity
+  id: ACBaseStairs
+  parent: BaseStructure
+  name: stairs
+  description: So that's how you get out of here!
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: _ArcheCrawl/Structures/Stairs/stairs_default.rsi
+    drawdepth: FloorObjects
+    offset: 0,0.25
+  - type: Physics
+    bodyType: Static
+  - type: ACStaircase
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeCircle
+          radius: 5
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+
+- type: entity
+  id: ACStairsUp
+  parent: ACBaseStairs
+  suffix: Up
+  components:
+  - type: Sprite
+    state: up
+  - type: Tag
+    tags:
+    - ACUpStairs
+
+- type: entity
+  id: ACStairsDown
+  parent: ACBaseStairs
+  suffix: Down
+  components:
+  - type: Sprite
+    state: down

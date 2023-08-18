@@ -18,6 +18,7 @@ public abstract partial class SharedStatsSystem : EntitySystem
     public override void Initialize()
     {
         InitializeScaling();
+        InitializeEffects();
 
         SubscribeLocalEvent<StatsComponent, MapInitEvent>(OnMapInit);
 

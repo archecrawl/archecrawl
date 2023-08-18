@@ -12,6 +12,7 @@
       Vigor: 10
       Intelligence: 10
   - type: StatScaledHealth
+  - type: StatScaledDamage
   - type: StatEffects
   - type: LagCompensation
   - type: RangedDamageSound

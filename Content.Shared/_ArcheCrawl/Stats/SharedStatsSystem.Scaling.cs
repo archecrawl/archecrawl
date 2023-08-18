@@ -10,6 +10,7 @@ public abstract partial class SharedStatsSystem
     public void InitializeScaling()
     {
         SubscribeLocalEvent<StatScaledHealthComponent, StatChangedEvent>(OnStatVariedDeathThresholdChanged);
+        SubscribeLocalEvent<StatScaledDamageComponent, StatChangedEvent>(OnStatChangedDamageScaling);
     }
 
     private void OnStatVariedDeathThresholdChanged(EntityUid uid, StatScaledHealthComponent component, ref StatChangedEvent args)
@@ -19,5 +20,13 @@ public abstract partial class SharedStatsSystem
 
         var val = MathF.Round(component.BaseThreshold + args.NewValue * component.ThresholdPerStat);
         _mobThreshold.SetMobStateThreshold(uid, val, component.TargetState);
+    }
+
+    private void OnStatChangedDamageScaling(EntityUid uid, StatScaledDamageComponent comp, ref StatChangedEvent args)
+    {
+        if (args.Stat.ID != comp.ScalingStat)
+            return;
+
+        comp.CurMultiplier = comp.BaseMultiplier + args.NewValue * comp.ValueAdded; // Hello everybody my name is multiplier.
     }
 }

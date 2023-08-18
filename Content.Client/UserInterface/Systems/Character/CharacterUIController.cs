@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Client._ArcheCrawl.Stats;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
@@ -157,9 +158,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             objectiveControl.AddChild(briefingControl);
             _window.Objectives.AddChild(objectiveControl);
         }
-
-        if (!_window.Objectives.Children.Any())
-            _window.ObjectivesLabel.Visible = false;
 
         _window.SpriteView.Sprite = sprite;
         _window.NameLabel.Text = entityName;

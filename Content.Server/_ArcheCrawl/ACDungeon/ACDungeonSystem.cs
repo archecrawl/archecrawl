@@ -2,6 +2,7 @@
 using Content.Server._ArcheCrawl.ACDungeon.Components;
 using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Parallax;
 using Content.Server.Procedural;
 using Content.Shared.Atmos;
@@ -29,6 +30,7 @@ public sealed class ACDungeonSystem : EntitySystem
     [Dependency] private readonly DungeonSystem _dungeon = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly AtmosphereSystem _atmosSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -82,16 +84,17 @@ public sealed class ACDungeonSystem : EntitySystem
         // Atmos
         var atmos = EnsureComp<MapAtmosphereComponent>(mapUid);
 
-        atmos.Space = false;
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
         moles[(int) Gas.Oxygen] = 21.824779f;
         moles[(int) Gas.Nitrogen] = 82.10312f;
 
-        atmos.Mixture = new GasMixture(2500)
+        var mixture = new GasMixture(2500)
         {
             Temperature = 293.15f,
             Moles = moles,
         };
+
+        _atmosSystem.SetMapAtmosphere(mapUid, false, mixture, atmos);
 
         var gridComp = EnsureComp<MapGridComponent>(mapUid);
         await _dungeon.GenerateDungeonAsync(_prototype.Index<DungeonConfigPrototype>("ACStone"), mapUid, gridComp, Vector2i.Zero, _random.Next());

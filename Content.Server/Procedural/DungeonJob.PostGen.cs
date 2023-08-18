@@ -1250,7 +1250,7 @@ public sealed partial class DungeonJob
         foreach (var neighbor in allExterior)
         {
             // Occupado
-            if (checkedTiles.Contains(neighbor) || !_anchorable.TileFree(grid, neighbor, CollisionLayer, CollisionMask))
+            if (checkedTiles.Contains(neighbor) || !_anchorable.TileFree(grid, neighbor, DungeonSystem.CollisionLayer, DungeonSystem.CollisionMask))
                 continue;
 
             if (!checkedTiles.Add(neighbor))

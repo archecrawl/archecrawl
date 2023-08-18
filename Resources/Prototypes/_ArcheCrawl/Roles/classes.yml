@@ -4,7 +4,7 @@
   description: class-description-fighter
   playTimeTracker: JobPassenger
   startingGear: ACFighterGear
-  icon: "ACFighter"
+  icon: "ACClassIconFighter"
   special:
   - !type:AddComponentSpecial
     components:
@@ -21,7 +21,7 @@
   description: class-description-ranger
   playTimeTracker: JobPassenger
   startingGear: ACRangerGear
-  icon: "ACRanger"
+  icon: "ACClassIconRanger"
   special:
   - !type:AddComponentSpecial
     components:
@@ -38,7 +38,7 @@
   description: class-description-rogue
   playTimeTracker: JobPassenger
   startingGear: ACRogueGear
-  icon: "ACRogue"
+  icon: "ACClassIconRogue"
   special:
   - !type:AddComponentSpecial
     components:
@@ -55,7 +55,7 @@
   description: class-description-wizard
   playTimeTracker: JobPassenger
   startingGear: ACWizardGear
-  icon: "ACWizard"
+  icon: "ACClassIconWizard"
   special:
   - !type:AddComponentSpecial
     components:

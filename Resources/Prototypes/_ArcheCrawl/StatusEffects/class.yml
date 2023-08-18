@@ -1,0 +1,30 @@
+# Okay yeah this is an odd place to have this but is where it would be in upstream and I guess for now it works
+# I just want the tests to stop screaming at me
+
+- type: statusIcon
+  parent: JobIcon
+  id: ACClassIconFighter
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: ACFighter
+
+- type: statusIcon
+  parent: JobIcon
+  id: ACClassIconRanger
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: ACRanger
+
+- type: statusIcon
+  parent: JobIcon
+  id: ACClassIconRogue
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: ACRogue
+
+- type: statusIcon
+  parent: JobIcon
+  id: ACClassIconWizard
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: ACWizard

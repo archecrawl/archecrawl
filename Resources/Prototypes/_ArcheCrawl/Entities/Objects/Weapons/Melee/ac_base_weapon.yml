@@ -41,7 +41,6 @@
     attackRate: 1.5 # fast attack
     range: 1.2 # low range
     angle: 35
-    heavyWindupModifier: 1.25
     wideAnimation: WeaponArcSlashShort
     damage:
       types:

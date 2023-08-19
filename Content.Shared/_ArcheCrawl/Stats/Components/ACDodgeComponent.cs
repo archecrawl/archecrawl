@@ -5,20 +5,20 @@ namespace Content.Shared._ArcheCrawl.Stats;
 [RegisterComponent, Access(typeof(SharedStatsSystem))]
 
 /// <summary>
-/// Scales damage on a stat specified.
+/// Allows the user to dodge attacks. Chance is based on a stat.
 /// </summary>
-public sealed partial class StatScaledDamageComponent : Component
+public sealed partial class ACDodgeComponent : Component
 {
-    [DataField("baseMultiplier")]
-    public float BaseMultiplier = 1f;
+    [DataField("baseChance")]
+    public float BaseChance = 0;
 
     [DataField("valueAdded")]
-    public float ValueAdded = 0.1f;
+    public float ValueAdded = 0.005f;
 
     /// <summary>
     /// The stat that scales the threshold
     /// </summary>
     [DataField("scalingStat", customTypeSerializer: typeof(PrototypeIdSerializer<StatPrototype>))]
-    public string ScalingStat = "Strength";
-    public float CurMultiplier = 1f;
+    public string ScalingStat = "Dexterity"; // Maybe it could be a mix of dexterity and inteligience? Probs needs a discussion.
+    public float CurChance = 0f;
 }

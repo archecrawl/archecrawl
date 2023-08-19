@@ -13,6 +13,7 @@
       Intelligence: 10
   - type: StatScaledHealth
   - type: StatScaledDamage
+  - type: ACDodge
   - type: StatEffects
   - type: LagCompensation
   - type: RangedDamageSound

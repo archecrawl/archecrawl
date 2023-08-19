@@ -5,12 +5,11 @@ namespace Content.Shared._ArcheCrawl.Stats;
 
 public abstract partial class SharedStatsSystem
 {
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-
     public void InitializeScaling()
     {
         SubscribeLocalEvent<StatScaledHealthComponent, StatChangedEvent>(OnStatVariedDeathThresholdChanged);
         SubscribeLocalEvent<StatScaledDamageComponent, StatChangedEvent>(OnStatChangedDamageScaling);
+        SubscribeLocalEvent<ACDodgeComponent, StatChangedEvent>(OnStatChangedDodgeScaling);
     }
 
     private void OnStatVariedDeathThresholdChanged(EntityUid uid, StatScaledHealthComponent component, ref StatChangedEvent args)
@@ -19,7 +18,7 @@ public abstract partial class SharedStatsSystem
             return;
 
         var val = MathF.Round(component.BaseThreshold + args.NewValue * component.ThresholdPerStat);
-        _mobThreshold.SetMobStateThreshold(uid, val, component.TargetState);
+        MobThresholdSystem.SetMobStateThreshold(uid, val, component.TargetState);
     }
 
     private void OnStatChangedDamageScaling(EntityUid uid, StatScaledDamageComponent comp, ref StatChangedEvent args)
@@ -28,5 +27,13 @@ public abstract partial class SharedStatsSystem
             return;
 
         comp.CurMultiplier = comp.BaseMultiplier + args.NewValue * comp.ValueAdded; // Hello everybody my name is multiplier.
+    }
+
+    private void OnStatChangedDodgeScaling(EntityUid uid, ACDodgeComponent comp, ref StatChangedEvent args)
+    {
+        if (args.Stat.ID != comp.ScalingStat)
+            return;
+
+        comp.CurChance = comp.BaseChance + args.NewValue * comp.ValueAdded;
     }
 }

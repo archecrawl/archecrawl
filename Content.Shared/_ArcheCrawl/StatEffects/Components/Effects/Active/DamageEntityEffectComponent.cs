@@ -3,7 +3,7 @@ using Content.Shared.Damage;
 namespace Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Active
 {
     [RegisterComponent]
-    public sealed class DamageEntityEffectComponent : Component
+    public sealed partial class DamageEntityEffectComponent : Component
     {
         /// <summary>
         /// Multiplied by the strength.

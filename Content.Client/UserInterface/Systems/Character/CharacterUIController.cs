@@ -6,14 +6,12 @@ using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
-using Content.Shared._ArcheCrawl.Stats;
-using Content.Shared._ArcheCrawl.Stats.Components;
 using Content.Shared.Input;
 using JetBrains.Annotations;
+using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.Utility;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -23,10 +21,11 @@ using static Robust.Client.UserInterface.Controls.BaseButton;
 namespace Content.Client.UserInterface.Systems.Character;
 
 [UsedImplicitly]
-public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>, IOnSystemChanged<StatsSystem>
+public sealed class CharacterUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<CharacterInfoSystem>
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
+    [UISystemDependency] private readonly SpriteSystem _sprite = default!;
 
     private CharacterWindow? _window;
     private MenuButton? CharacterButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.CharacterButton;
@@ -69,16 +68,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         system.OnCharacterDetached -= CharacterDetached;
     }
 
-    public void OnSystemLoaded(StatsSystem system)
-    {
-        system.OnStatsChanged += UpdateStatsText;
-    }
-
-    public void OnSystemUnloaded(StatsSystem system)
-    {
-        system.OnStatsChanged -= UpdateStatsText;
-    }
-
     public void UnloadButton()
     {
         if (CharacterButton == null)
@@ -117,8 +106,10 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
         }
 
-        var (job, objectives, briefing, sprite, entityName, entity) = data;
+        var (entity, job, objectives, briefing, entityName) = data;
 
+        _window.SpriteView.SetEntity(entity);
+        _window.NameLabel.Text = entityName;
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
 
@@ -139,7 +130,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             foreach (var condition in conditions)
             {
                 var conditionControl = new ObjectiveConditionsControl();
-                conditionControl.ProgressTexture.Texture = condition.SpriteSpecifier.Frame0();
+                conditionControl.ProgressTexture.Texture = _sprite.Frame0(condition.SpriteSpecifier);
                 conditionControl.ProgressTexture.Progress = condition.Progress;
                 var titleMessage = new FormattedMessage();
                 var descriptionMessage = new FormattedMessage();
@@ -159,10 +150,13 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
-        _window.SpriteView.Sprite = sprite;
-        _window.NameLabel.Text = entityName;
+        var controls = _characterInfo.GetCharacterInfoControls(entity);
+        foreach (var control in controls)
+        {
+            _window.Objectives.AddChild(control);
+        }
 
-        UpdateStatsText(entity);
+        _window.RolePlaceholder.Visible = !controls.Any() && !objectives.Any();
     }
 
     private void CharacterDetached()
@@ -199,31 +193,5 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _characterInfo.RequestCharacterInfo();
             _window.Open();
         }
-    }
-
-    private void UpdateStatsText(EntityUid uid)
-    {
-        if (!EntityManager.TryGetComponent<StatsComponent>(uid, out var statsComponent))
-            return;
-
-        var allStats = new List<StatPrototype>();
-        foreach (var stat in statsComponent.Stats.Keys)
-        {
-            allStats.Add(_prototypeManager.Index<StatPrototype>(stat));
-        }
-
-        var orderedStats = allStats.OrderBy(p => p.Order);
-
-        var msg = new FormattedMessage();
-        foreach (var proto in orderedStats)
-        {
-            msg.AddMarkup(Loc.GetString("character-info-stats-name", ("stat",Loc.GetString(proto.Name))));
-            msg.PushNewline();
-            msg.AddMarkup(Loc.GetString("character-info-stats-level",
-                ("amount", statsComponent.Stats[proto.ID]), ("max", proto.MaxValue)));
-            msg.PushNewline();
-        }
-
-        _window?.StatsLabel.SetMessage(msg);
     }
 }

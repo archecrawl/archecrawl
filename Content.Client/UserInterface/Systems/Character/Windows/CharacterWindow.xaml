@@ -17,6 +17,7 @@
             <RichTextLabel Name="StatsLabel" Access="Public"/>
             <Label Name="ObjectivesLabel" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center" Access="Public"/>
             <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
+            <cc:Placeholder Name="RolePlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
         </BoxContainer>
     </ScrollContainer>
 </windows:CharacterWindow>

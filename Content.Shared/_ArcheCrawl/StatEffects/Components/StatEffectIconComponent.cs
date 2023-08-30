@@ -4,7 +4,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Shared._ArcheCrawl.StatEffects.Components;
 
 [RegisterComponent]
-public sealed class StatEffectIconComponent : Component
+public sealed partial class StatEffectIconComponent : Component
 {
     [DataField("statusIcon", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<StatusIconPrototype>))]
     public string StatusIcon = string.Empty;

@@ -13,6 +13,7 @@
       Intelligence: 10
   - type: StatScaledHealth
   - type: StatEffects
+  - type: FloorOcclusion
   - type: LagCompensation
   - type: RangedDamageSound
     soundGroups:

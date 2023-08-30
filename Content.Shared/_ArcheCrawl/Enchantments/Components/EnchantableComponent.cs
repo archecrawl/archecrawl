@@ -10,7 +10,7 @@ namespace Content.Shared._ArcheCrawl.Enchantments.Components;
 /// some neat visuals.
 /// </summary>
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedEnchantmentSystem))]
-public sealed class EnchantableComponent : Component
+public sealed partial class EnchantableComponent : Component
 {
     [DataField("enchantmentContainerId")]
     public string EnchantmentContainerId = "enchantment-container";

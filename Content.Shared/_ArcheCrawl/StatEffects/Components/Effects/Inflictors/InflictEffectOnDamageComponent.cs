@@ -1,7 +1,7 @@
 namespace Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Inflictors
 {
     [RegisterComponent]
-    public sealed class InflictEffectOnDamageComponent : Component
+    public sealed partial class InflictEffectOnDamageComponent : Component
     {
         /// <summary>
         /// The effect that's going to be applied

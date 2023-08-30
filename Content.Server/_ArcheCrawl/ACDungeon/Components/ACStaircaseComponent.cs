@@ -3,7 +3,7 @@
 namespace Content.Server._ArcheCrawl.ACDungeon.Components;
 
 [RegisterComponent]
-public sealed class ACStaircaseComponent : Component
+public sealed partial class ACStaircaseComponent : Component
 {
     /// <summary>
     /// The staircase that is linked to this one, as a way to move backwards.

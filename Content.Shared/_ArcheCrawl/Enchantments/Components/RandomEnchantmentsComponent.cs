@@ -5,7 +5,7 @@
 /// a bunch of random chosen enchantments based on a budget.
 /// </summary>
 [RegisterComponent]
-public sealed class RandomEnchantmentsComponent : Component
+public sealed partial class RandomEnchantmentsComponent : Component
 {
     /// <summary>
     /// The minimum budget allocated for enchantments.

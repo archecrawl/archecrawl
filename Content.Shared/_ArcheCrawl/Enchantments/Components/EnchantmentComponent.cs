@@ -12,7 +12,7 @@ namespace Content.Shared._ArcheCrawl.Enchantments.Components;
 /// applying extra behavior and visuals to an item.
 /// </summary>
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedEnchantmentSystem))]
-public sealed class EnchantmentComponent : Component
+public sealed partial class EnchantmentComponent : Component
 {
     /// <summary>
     /// The entity this enchantment is applied to.

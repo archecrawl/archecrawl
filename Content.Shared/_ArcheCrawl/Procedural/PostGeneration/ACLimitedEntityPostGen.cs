@@ -7,7 +7,7 @@ namespace Content.Shared._ArcheCrawl.Procedural.PostGeneration;
 /// <summary>
 /// Spawns a single instance of a given entity
 /// </summary>
-public sealed class ACLimitedEntityPostGen : IPostDunGen
+public sealed partial class ACLimitedEntityPostGen : IPostDunGen
 {
     /// <summary>
     /// How many are we spawning

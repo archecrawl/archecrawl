@@ -7,7 +7,7 @@ namespace Content.Shared._ArcheCrawl.Enchantments.Components;
 /// This is used for giving unique inhand visuals to enchanted items
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed class EnchantmentInhandVisualsComponent : Component
+public sealed partial class EnchantmentInhandVisualsComponent : Component
 {
     [DataField("key")]
     public string Key = string.Empty;

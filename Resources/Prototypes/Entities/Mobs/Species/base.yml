@@ -15,6 +15,7 @@
   - type: StatScaledDamage
   - type: ACDodge
   - type: StatEffects
+  - type: FloorOcclusion
   - type: LagCompensation
   - type: RangedDamageSound
     soundGroups:

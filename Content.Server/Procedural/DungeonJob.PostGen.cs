@@ -1258,7 +1258,7 @@ public sealed partial class DungeonJob
 
             var gridPos = grid.GridTileToLocal(neighbor);
 
-            _entManager.SpawnEntities(gridPos, gen.Entity);
+            _entManager.SpawnEntity(gen.Entity, gridPos);
             count++;
 
             if (count >= gen.Limit)

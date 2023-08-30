@@ -1,18 +1,18 @@
 - type: font
   id: Default
-  path: /Fonts/_Archecrawl/Lora/Lora-Regular.ttf
+  path: /Fonts/_ArcheCrawl/Lora/Lora-Regular.ttf
 
 - type: font
   id: DefaultItalic
-  path: /Fonts/_Archecrawl/Lora/Lora-Italic.ttf
+  path: /Fonts/_ArcheCrawl/Lora/Lora-Italic.ttf
 
 - type: font
   id: DefaultBold
-  path: /Fonts/_Archecrawl/Lora/Lora-Bold.ttf
+  path: /Fonts/_ArcheCrawl/Lora/Lora-Bold.ttf
 
 - type: font
   id: DefaultBoldItalic
-  path: /Fonts/_Archecrawl/Lora/Lora-BoldItalic.ttf
+  path: /Fonts/_ArcheCrawl/Lora/Lora-BoldItalic.ttf
 
 - type: font
   id: NotoSansDisplay

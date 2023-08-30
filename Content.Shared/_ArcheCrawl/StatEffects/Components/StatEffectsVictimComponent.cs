@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._ArcheCrawl.StatEffects.Components;
 
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedStatEffectsSystem))]
-public sealed class StatEffectsComponent : Component
+public sealed partial class StatEffectsComponent : Component
 {
     [DataField("statusContainerId")]
     public string StatusContainerId = "status-effect-container";

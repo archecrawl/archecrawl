@@ -3,7 +3,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._ArcheCrawl.StatEffects.Components
 {
     [RegisterComponent, NetworkedComponent, Access(typeof(SharedStatEffectsSystem))]
-    public sealed class StatEffectComponent : Component
+    public sealed partial class StatEffectComponent : Component
     {
         /// <summary>
         /// Anything less than 1 will make it so that the effect can have infinite strength.

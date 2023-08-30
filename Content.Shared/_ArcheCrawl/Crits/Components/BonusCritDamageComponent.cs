@@ -1,7 +1,7 @@
 ﻿namespace Content.Shared._ArcheCrawl.Crits.Components;
 
 [RegisterComponent]
-public sealed class BonusCritDamageComponent : Component
+public sealed partial class BonusCritDamageComponent : Component
 {
     [DataField("flatModifier")]
     public float FlatModifier;

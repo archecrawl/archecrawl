@@ -10,11 +10,12 @@
   - type: DefenceEffect
     modifiers:
       coefficients:
-        Blunt: 0.8
+        Blunt: 1
+    valueAdded: -0.05
 
 - type: entity
   id: ACHardFleshEffect
-  name: Hard Flesh
+  name: Hard flesh
   noSpawn: true
   components:
   - type: StatEffect
@@ -24,7 +25,8 @@
   - type: DefenceEffect
     modifiers:
       coefficients:
-        Piercing: 0.8
+        Piercing: 1
+    valueAdded: -0.05
 
 - type: entity
   id: ACReinforcedSkinEffect
@@ -38,7 +40,8 @@
   - type: DefenceEffect
     modifiers:
       coefficients:
-        Slash: 0.8
+        Slash: 1
+    valueAdded: -0.05
 
 - type: entity
   id: ACBasicStrengthEffect

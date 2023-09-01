@@ -5,14 +5,18 @@ using Content.Shared._ArcheCrawl.StatEffects.Components.Effects.Passive;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared._ArcheCrawl.ACMath;
 
 namespace Content.Shared._ArcheCrawl.StatEffects
 {
     /// <summary>
     /// // Mostly for effects that don't spawn stuff/delete entities
     /// </summary>
+
     public abstract partial class SharedStatEffectsSystem
     {
+        [Dependency] private readonly ArcheCrawlMath _archeMath = default!;
+
         public void InitializeEffects()
         {
             SubscribeLocalEvent<DamageEntityEffectComponent, StatEffectActivateEvent>(DamageEffect);
@@ -50,7 +54,7 @@ namespace Content.Shared._ArcheCrawl.StatEffects
             if (!TryComp<StatEffectComponent>(uid, out var effectComp))
                 return;
 
-            args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, ScaleModiferWithStrength(comp.Modifiers, effectComp.OverallStrength));
+            args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, _archeMath.MultiplyDamageModifier(comp.Modifiers, 1 + comp.ValueAdded * effectComp.OverallStrength));
         }
 
         private void AttackDamageEffect(EntityUid uid, AttackDamageEffectComponent comp, StatEffectRelayEvent<MeleeHitEvent> args)
@@ -58,34 +62,14 @@ namespace Content.Shared._ArcheCrawl.StatEffects
             if (!TryComp<StatEffectComponent>(uid, out var effectComp))
                 return;
 
-            args.Args.BonusDamage = DamageSpecifier.ApplyModifierSet(args.Args.BonusDamage, ScaleModiferWithStrength(comp.Modifiers, effectComp.OverallStrength));
+            args.Args.BonusDamage = DamageSpecifier.ApplyModifierSet(args.Args.BonusDamage, _archeMath.MultiplyDamageModifier(comp.Modifiers, 1 + comp.ValueAdded * effectComp.OverallStrength));
         }
 
-        private void OnGetStatusIcon(EntityUid uid, StatEffectIconComponent component,  StatEffectRelayEvent<GetStatusIconsEvent> args)
+        private void OnGetStatusIcon(EntityUid uid, StatEffectIconComponent component, StatEffectRelayEvent<GetStatusIconsEvent> args)
         {
             args.Args.StatusIcons.Add(PrototypeManager.Index<StatusIconPrototype>(component.StatusIcon));
         }
 
-        #endregion
-
-        #region Math functions
-
-        private static DamageModifierSet ScaleModiferWithStrength(DamageModifierSet modifierSet, float strength)
-        {
-            DamageModifierSet newModifier = new();
-
-            foreach (var coefficient in modifierSet.Coefficients)
-            {
-                newModifier.Coefficients[coefficient.Key] = (float) Math.Pow(coefficient.Value, strength);
-            }
-
-            foreach (var flatReduction in modifierSet.FlatReduction)
-            {
-                newModifier.FlatReduction[flatReduction.Key] = (float) Math.Pow(flatReduction.Value, strength);
-            }
-
-            return newModifier;
-        }
         #endregion
     }
 }

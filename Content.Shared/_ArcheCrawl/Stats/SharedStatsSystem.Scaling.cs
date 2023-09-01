@@ -5,8 +5,6 @@ namespace Content.Shared._ArcheCrawl.Stats;
 
 public abstract partial class SharedStatsSystem
 {
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-
     public void InitializeScaling()
     {
         SubscribeLocalEvent<StatScaledHealthComponent, StatChangedEvent>(OnStatVariedDeathThresholdChanged);
@@ -18,6 +16,6 @@ public abstract partial class SharedStatsSystem
             return;
 
         var val = MathF.Round(component.BaseThreshold + args.NewValue * component.ThresholdPerStat);
-        _mobThreshold.SetMobStateThreshold(uid, val, component.TargetState);
+        MobThresholdSystem.SetMobStateThreshold(uid, val, component.TargetState);
     }
 }

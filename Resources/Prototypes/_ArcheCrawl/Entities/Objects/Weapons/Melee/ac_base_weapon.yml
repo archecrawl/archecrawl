@@ -23,6 +23,13 @@
     containers:
       enchantment-container: !type:Container
         occludes: false
+  - type: StatScaledDamage
+    modifiers:
+      coefficients:
+        Blunt: 1
+        Piercing: 1
+        Slash: 1
+    valueAdded: 0.05
 
 # todo: once we have actual weapon gen make these all abstract
 
@@ -60,6 +67,8 @@
   - type: Tag
     tags:
     - ACWeaponDagger
+  - type: StatScaledDamage
+    scalingStat: "Dexterity"
 
 - type: entity
   id: ACBaseSword

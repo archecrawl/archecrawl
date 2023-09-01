@@ -12,6 +12,13 @@
       Vigor: 10
       Intelligence: 10
   - type: StatScaledHealth
+  - type: StatScaledDamage
+    modifiers:
+      coefficients:
+        Blunt: 1
+        Piercing: 1
+        Slash: 1
+  - type: ACDodge
   - type: StatEffects
   - type: FloorOcclusion
   - type: LagCompensation

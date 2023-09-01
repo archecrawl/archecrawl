@@ -1,6 +1,10 @@
 ﻿using Content.Shared._ArcheCrawl.Stats.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Popups;
 using JetBrains.Annotations;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Shared._ArcheCrawl.Stats;
 
@@ -11,6 +15,10 @@ namespace Content.Shared._ArcheCrawl.Stats;
 public abstract partial class SharedStatsSystem : EntitySystem
 {
     [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
+    [Dependency] protected readonly MobThresholdSystem MobThresholdSystem = default!;
+    [Dependency] protected readonly IRobustRandom Random = default!;
+    [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
+    [Dependency] protected readonly INetManager NetManager = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -18,6 +26,7 @@ public abstract partial class SharedStatsSystem : EntitySystem
     public override void Initialize()
     {
         InitializeScaling();
+        InitializeEffects();
 
         SubscribeLocalEvent<StatsComponent, MapInitEvent>(OnMapInit);
 

@@ -5,6 +5,7 @@
   id: BaseMobOrganic
   noSpawn: true
   components:
+  - type: ACPlayerStatusUI
   - type: Stats
     initialStats:
       Strength: 10

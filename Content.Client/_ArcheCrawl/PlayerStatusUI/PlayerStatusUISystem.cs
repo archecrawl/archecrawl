@@ -11,7 +11,6 @@ using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.Player;
 using Robust.Client.State;
-using FastAccessors;
 using Content.Shared.Mobs;
 using Robust.Client.UserInterface;
 using Content.Shared.Mobs.Systems;

@@ -17,10 +17,7 @@ public sealed partial class ACPlayerStatusUI : UIWidget
     #region Variables
 
     public RichTextLabel EntNameText;
-
-    private readonly PanelContainer _panel;
-    private readonly BoxContainer _barContainer;
-    private readonly BoxContainer _box;
+    public BoxContainer ControlContainer;
 
     #endregion
 
@@ -36,7 +33,7 @@ public sealed partial class ACPlayerStatusUI : UIWidget
         Margin = new Thickness(10);
 
         // The background.
-        _panel = new PanelContainer
+        var panel = new PanelContainer
         {
             HorizontalAlignment = HAlignment.Stretch,
             VerticalAlignment = VAlignment.Stretch,
@@ -44,7 +41,7 @@ public sealed partial class ACPlayerStatusUI : UIWidget
         };
 
         // The actual box storing stuff.
-        _box = new BoxContainer
+        var box = new BoxContainer
         {
             Margin = new Thickness(2),
             Orientation = LayoutOrientation.Vertical,
@@ -65,7 +62,7 @@ public sealed partial class ACPlayerStatusUI : UIWidget
 
         // The box that stores bars (or other stuff.)
 
-        _barContainer = new BoxContainer()
+        ControlContainer = new BoxContainer()
         {
             SeparationOverride = 2,
             Orientation = LayoutOrientation.Vertical,
@@ -85,12 +82,12 @@ public sealed partial class ACPlayerStatusUI : UIWidget
 
         stripeBack.AddChild(EntNameText);
 
-        _box.AddChild(stripeBack);
-        _box.AddChild(_barContainer);
-        _box.AddChild(footer);
-        _panel.AddChild(_box);
+        box.AddChild(stripeBack);
+        box.AddChild(ControlContainer);
+        box.AddChild(footer);
+        panel.AddChild(box);
 
-        AddChild(_panel);
+        AddChild(panel);
     }
 
     #endregion
@@ -98,25 +95,7 @@ public sealed partial class ACPlayerStatusUI : UIWidget
     #region Functions
     public void ResetUI()
     {
-        _barContainer.DisposeAllChildren();
-    }
-
-    public void AddControl(Control bar, bool useDefaults)
-    {
-        if (useDefaults)
-        {
-            bar.SetSize = bar.MaxSize = new(250, 12); // Should have a min size just so it doesn't look shit without bars.
-            bar.HorizontalAlignment = HAlignment.Center;
-            bar.VerticalAlignment = VAlignment.Top;
-        }
-
-        _barContainer.AddChild(bar);
-    }
-
-    public void RescaleUI()
-    {
-        // Measure(Vector2Helpers.Infinity);
-        // SetSize = DesiredSize;
+        ControlContainer.DisposeAllChildren();
     }
 
     #endregion

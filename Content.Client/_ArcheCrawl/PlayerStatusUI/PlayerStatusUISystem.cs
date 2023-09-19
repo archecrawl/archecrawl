@@ -86,6 +86,8 @@ public sealed partial class ACPlayerStatusUISystem : EntitySystem
             ForegroundStyleBoxOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#207020") },
             MaxValue = (float) maxHP,
             Value = hp,
+            MaxSize = new Vector2(250, 12),
+            SetSize = new Vector2(250, 12),
         };
 
         bar.MaxValue = (float) maxHP;
@@ -104,7 +106,7 @@ public sealed partial class ACPlayerStatusUISystem : EntitySystem
 
         bar.AddChild(label);
 
-        args.ControlData.Add(new(0, bar, true));
+        args.Controls.Add((0, bar));
     }
 }
 
@@ -114,14 +116,14 @@ public sealed partial class ACPlayerStatusUISystem : EntitySystem
 public sealed partial class ACUpdateStatusUIEvent : EntityEventArgs { }
 
 /// <summary>
-/// Used for putting stuff into the UI. Just add things to ControlData.
+/// Used for putting stuff into the UI. Just add a control!
 /// </summary>
 public sealed partial class ACGetStatusUIControlsEvent : EntityEventArgs
 {
-    public List<(int priority, Control bar, bool UseDefaults)> ControlData;
+    public List<(int order, Control control)> Controls;
 
-    public ACGetStatusUIControlsEvent(List<(int priority, Control bar, bool UseDefaults)> controlData)
+    public ACGetStatusUIControlsEvent(List<(int order, Control control)> controls)
     {
-        ControlData = controlData;
+        Controls = controls;
     }
 }

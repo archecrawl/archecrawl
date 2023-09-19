@@ -100,27 +100,19 @@ public sealed partial class ACStatusUIController : UIController, IOnStateEntered
 
         Gui.ResetUI(); // Clears all the previous bars.
 
-        Gui.Visible = true; // If it got this far, it should be visible, right?
+        Gui.Visible = true; // Makes it visible if it's been made invisible somehow.
 
         Gui.EntNameText.SetMarkup(Loc.GetString("ac-status-ui-entity-name", ("entity", uid)));
 
-        /// <summary>
-        /// Data used to add controls to the UI.
-        /// </summary>
-        /// <param name="priority">The lower the priority, the higher up the element should be.</param>
-        /// <param name="control">The element being applied.</param>
-        /// <param name="useDefaults">Should it use the "default" settings? This should be used for progress bars.</param>
-        var controlData = new List<(int priority, Control control, bool useDefaults)>();
+        var controlsEv = new ACGetStatusUIControlsEvent(new());
 
-        _entityManager.EventBus.RaiseLocalEvent(uid, new ACGetStatusUIControlsEvent(controlData));
+        _entityManager.EventBus.RaiseLocalEvent(uid, controlsEv);
 
-        var orderedData = controlData.OrderBy(i => i.priority);
+        var orderedControls = controlsEv.Controls.OrderBy(i => i.order);
 
-        foreach (var (_, control, useDefaults) in orderedData)
+        foreach (var (_, control) in orderedControls)
         {
-            Gui.AddControl(control, useDefaults);
+            Gui.ControlContainer.AddChild(control);
         }
-
-        Gui.RescaleUI();
     }
 }

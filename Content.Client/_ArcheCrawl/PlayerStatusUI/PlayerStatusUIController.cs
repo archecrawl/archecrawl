@@ -22,7 +22,7 @@ using Content.Client.UserInterface.Systems.Gameplay;
 
 namespace Content.Client._ArcheCrawl.PlayerStatus.UI;
 
-public sealed partial class ACHealthUIController : UIController, IOnStateEntered<GameplayState>
+public sealed partial class ACStatusUIController : UIController, IOnStateEntered<GameplayState>
 {
     private ACPlayerStatusUI? Gui => UIManager.GetActiveUIWidgetOrNull<ACPlayerStatusUI>();
     [Dependency] private readonly IPlayerManager _playerManager = default!;

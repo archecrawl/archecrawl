@@ -5,6 +5,7 @@ using Content.Client.UserInterface.Controls;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Client.UserInterface.XAML;
 
 namespace Content.Client._ArcheCrawl.PlayerStatus.UI;
 
@@ -19,6 +20,7 @@ public sealed partial class ACPlayerStatusUI : UIWidget
 
     private readonly PanelContainer _panel;
     private readonly BoxContainer _barContainer;
+    private readonly BoxContainer _box;
 
     #endregion
 
@@ -26,26 +28,35 @@ public sealed partial class ACPlayerStatusUI : UIWidget
 
     public ACPlayerStatusUI()
     {
-        Margin = new Thickness(10); // The panel touching the edge of the screen looks... meh.
+        Name = "ArcheCrawlStatusUI";
+        HorizontalAlignment = HAlignment.Center;
         VerticalAlignment = VAlignment.Top;
+        MinSize = new Vector2(256, 256);
         Orientation = LayoutOrientation.Vertical;
+        Margin = new Thickness(10);
 
         // The background.
         _panel = new PanelContainer
         {
-            VerticalAlignment = VAlignment.Top,
-            StyleClasses = { "tooltipBox" }
+            HorizontalAlignment = HAlignment.Stretch,
+            VerticalAlignment = VAlignment.Stretch,
+            StyleClasses = { "tooltipBox" },
         };
 
         // The actual box storing stuff.
-        var box = new BoxContainer
+        _box = new BoxContainer
         {
             Margin = new Thickness(2),
             Orientation = LayoutOrientation.Vertical,
         };
 
         // The entity label and it's background.
-        var stripeBack = new StripeBack { };
+        var stripeBack = new StripeBack
+        {
+            MaxSize = new Vector2(275, 1000),
+            HorizontalExpand = true,
+            VerticalExpand = true,
+        };
 
         EntNameText = new RichTextLabel
         {
@@ -65,18 +76,19 @@ public sealed partial class ACPlayerStatusUI : UIWidget
 
         var footer = new VSeparator
         {
-            MinHeight = SetHeight = 2
+            MinHeight = SetHeight = 2,
+            Visible = false,
+            ReservesSpace = true,
         };
 
         // Now add all of these together and you get some UI.
 
         stripeBack.AddChild(EntNameText);
 
-        box.AddChild(stripeBack);
-        box.AddChild(_barContainer);
-        box.AddChild(footer);
-
-        _panel.AddChild(box);
+        _box.AddChild(stripeBack);
+        _box.AddChild(_barContainer);
+        _box.AddChild(footer);
+        _panel.AddChild(_box);
 
         AddChild(_panel);
     }
@@ -103,8 +115,8 @@ public sealed partial class ACPlayerStatusUI : UIWidget
 
     public void RescaleUI()
     {
-        _panel.Measure(Vector2Helpers.Infinity);
-        _panel.SetSize = _panel.DesiredSize;
+        // Measure(Vector2Helpers.Infinity);
+        // SetSize = DesiredSize;
     }
 
     #endregion

@@ -28,12 +28,12 @@ public abstract partial class SharedStatsSystem : EntitySystem
         InitializeScaling();
         InitializeEffects();
 
-        SubscribeLocalEvent<StatsComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<StatsComponent, ComponentStartup>(OnCompStartup);
 
         _sawmill = Logger.GetSawmill("stat");
     }
 
-    private void OnMapInit(EntityUid uid, StatsComponent component, MapInitEvent args)
+    private void OnCompStartup(EntityUid uid, StatsComponent component, ComponentStartup args)
     {
         foreach (var (key, val) in component.InitialStats)
         {

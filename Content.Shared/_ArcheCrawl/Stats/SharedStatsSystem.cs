@@ -92,10 +92,11 @@ public abstract partial class SharedStatsSystem : EntitySystem
 
         var clampedVal = Math.Clamp(value, stat.MinValue, stat.MaxValue);
         var ev = new StatChangedEvent(uid, stat, component.Stats[stat.ID], clampedVal);
+        var netEv = new NetworkStatChangedEvent(GetNetEntity(uid), component.Stats[stat.ID], clampedVal);
         component.Stats[stat.ID] = clampedVal;
-        Dirty(component);
+        Dirty(uid, component);
         RaiseLocalEvent(uid, ref ev, true);
-        RaiseNetworkEvent(new NetworkStatChangedEvent(ev), uid);
+        RaiseNetworkEvent(netEv, uid);
     }
     #endregion
 

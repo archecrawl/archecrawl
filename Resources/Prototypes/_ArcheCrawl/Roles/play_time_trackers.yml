@@ -1,0 +1,11 @@
+- type: playTimeTracker
+  id: ACFighter
+
+- type: playTimeTracker
+  id: ACRanger
+
+- type: playTimeTracker
+  id: ACRogue
+
+- type: playTimeTracker
+  id: ACWizard

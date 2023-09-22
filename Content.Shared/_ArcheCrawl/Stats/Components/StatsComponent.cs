@@ -47,7 +47,7 @@ public readonly record struct StatChangedEvent(EntityUid Entity, StatPrototype S
 [Serializable, NetSerializable]
 public sealed class NetworkStatChangedEvent : EntityEventArgs
 {
-    public EntityUid Entity;
+    public NetEntity Entity;
 
     public int OldValue;
 
@@ -55,10 +55,10 @@ public sealed class NetworkStatChangedEvent : EntityEventArgs
 
     public int Delta => NewValue - OldValue;
 
-    public NetworkStatChangedEvent(StatChangedEvent args)
+    public NetworkStatChangedEvent(NetEntity entity, int oldValue, int newValue)
     {
-        Entity = args.Entity;
-        OldValue = args.OldValue;
-        NewValue = args.NewValue;
+        Entity = entity;
+        OldValue = oldValue;
+        NewValue = newValue;
     }
 }

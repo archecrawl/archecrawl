@@ -28,12 +28,12 @@ public abstract partial class SharedStatsSystem : EntitySystem
         InitializeScaling();
         InitializeEffects();
 
-        SubscribeLocalEvent<StatsComponent, ComponentStartup>(OnCompStartup);
+        SubscribeLocalEvent<StatsComponent, ComponentInit>(OnCompInit);
 
         _sawmill = Logger.GetSawmill("stat");
     }
 
-    private void OnCompStartup(EntityUid uid, StatsComponent component, ComponentStartup args)
+    private void OnCompInit(EntityUid uid, StatsComponent component, ComponentInit args)
     {
         foreach (var (key, val) in component.InitialStats)
         {
@@ -90,8 +90,9 @@ public abstract partial class SharedStatsSystem : EntitySystem
         if (!component.Stats.ContainsKey(stat.ID))
             return;
 
-        var ev = new StatChangedEvent(uid, stat, component.Stats[stat.ID], value);
-        component.Stats[stat.ID] = Math.Clamp(value, stat.MinValue, stat.MaxValue);
+        var clampedVal = Math.Clamp(value, stat.MinValue, stat.MaxValue);
+        var ev = new StatChangedEvent(uid, stat, component.Stats[stat.ID], clampedVal);
+        component.Stats[stat.ID] = clampedVal;
         Dirty(component);
         RaiseLocalEvent(uid, ref ev, true);
         RaiseNetworkEvent(new NetworkStatChangedEvent(ev), uid);

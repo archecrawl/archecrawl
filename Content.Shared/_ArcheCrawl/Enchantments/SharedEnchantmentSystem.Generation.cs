@@ -18,7 +18,7 @@ public abstract partial class SharedEnchantmentSystem
 
     public void GenerateRandomEnchantments(EntityUid uid, float budget, RandomEnchantmentsComponent? random = null, EnchantableComponent? component = null)
     {
-        if (!Resolve(uid, ref random, ref component))
+        if (!Resolve(uid, ref random, ref component, false))
             return;
 
         while (budget > 0)

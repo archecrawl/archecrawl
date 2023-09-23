@@ -2,7 +2,7 @@
   id: ACFighter
   name: class-name-fighter
   description: class-description-fighter
-  playTimeTracker: JobPassenger
+  playTimeTracker: ACFighter
   startingGear: ACFighterGear
   icon: "ACClassIconFighter"
   special:
@@ -19,7 +19,7 @@
   id: ACRanger
   name: class-name-ranger
   description: class-description-ranger
-  playTimeTracker: JobPassenger
+  playTimeTracker: ACRanger
   startingGear: ACRangerGear
   icon: "ACClassIconRanger"
   special:
@@ -36,7 +36,7 @@
   id: ACRogue
   name: class-name-rogue
   description: class-description-rogue
-  playTimeTracker: JobPassenger
+  playTimeTracker: ACRogue
   startingGear: ACRogueGear
   icon: "ACClassIconRogue"
   special:
@@ -53,7 +53,7 @@
   id: ACWizard
   name: class-name-wizard
   description: class-description-wizard
-  playTimeTracker: JobPassenger
+  playTimeTracker: ACWizard
   startingGear: ACWizardGear
   icon: "ACClassIconWizard"
   special:

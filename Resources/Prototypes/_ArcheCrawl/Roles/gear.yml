@@ -16,8 +16,9 @@
     jumpsuit: ACClothingUniformTunicRanger
     back: ACClothingBackpackAdventurer
     shoes: ACAdventurerBoots
+    belt: ACClothingBeltQuiverFilled
   inhand:
-    right hand: ACBaseDagger
+    right hand: BowImprovised
   innerclothingskirt: ACClothingUniformTunicRanger
   satchel: ACClothingSatchelAdventurer
   duffelbag: ACClothingDuffelAdventurer
